@@ -28,5 +28,5 @@ end
 
 % OUTPUT save
     save('.\mat\5irc_simresult.mat', 'idx_corr', 'val_corr');
-    fprintf('IRMETHODp3 DONE\n');
+    % fprintf('IRMETHODp3 DONE\n');
 % end output save

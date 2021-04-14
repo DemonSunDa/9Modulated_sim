@@ -47,5 +47,5 @@
 
 % OUTPUT save
     save('.\mat\3fpspec_simdata.mat', 'L_ft', 'fp_ft', 'fp_res', 'fp_ores', 'fpspec_simdata');
-    fprintf('FSPEC DONE\n');
+    % fprintf('FSPEC DONE\n');
 % end output save

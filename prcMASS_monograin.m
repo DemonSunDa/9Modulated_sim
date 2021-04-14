@@ -7,40 +7,20 @@ clc;
 clear variables;
 
 
-% % INPUT initial state
-%     fprintf('Mode = %d\n', SC.mode);
-%     fprintf('Wavelength = %.2f um\n', SC.lambda * 1e6);
-%     fprintf('Distance from centre of generation patch to detection beam = %.2f um\n', SC.d_gc2d * 1e6);
-%     
-%     vsc.noise_level = input('Noise level (in percentage) = ') / 100;
-%     
-%     vsc.n_fringe = input('Fringe number = '); % when 10
-%     vsc.patch = SC.lambda * vsc.n_fringe; % equal to 200e-6
-%     
-%     vsc.n_step = input('Number of rotation steps = ');
-%     vsc.deg_step = 180 / vsc.n_step;
-%     
-%     initg1.prop = input('Grain 1 proportion (in percentage) = ') / 100;
-%     initg2.prop = 1 - initg1.prop;
-%     initg1.d_2d = SC.d_gc2d - initg2.prop * vsc.patch / 2; % distance from centre of g1 to detection beam
-%     initg2.d_2d = SC.d_gc2d + initg1.prop * vsc.patch / 2; % distance from centre of g2 to detection beam
-%     
-%     fprintf('INPUT GRAIN1 ORIENTATION\n');
-%     fprintf('(the grain closer to detection beam)\n');
-%     [initg1.x_miller, initg1.y_miller, initg1.deg] = gparams_IN();
-%     fprintf('INPUT GRAIN2 ORIENTATION\n');
-%     [initg2.x_miller, initg2.y_miller, initg2.deg] = gparams_IN();
-% % end input initial state
-
-
-% main
+% init
     mod1CONSTANTS_r3
     mod2preMASSp1
-    
+
     vec_g1_prop = (0 : 0.1 : 1);
     vec_n_fringe = (2 : 1 : 12);
     vec_noise_level = (0 : 0.05 : 0.5);
-    
+
+    % storage
+    stArr_ginfo(1 : (sz_mat_graintype * 1 * 1 * 1)) = struct()
+% end init
+
+
+% main
     for ctr_d5 = 1 : 1 % loop for noise_level
         noise_level = vec_noise_level(ctr_d5);
 
@@ -58,6 +38,10 @@ clear variables;
                     mod3FSPEC_r4
                     mod5IRMETHODp1et2_t4
                     mod5IRMETHODp3_t1
+
+                    % re store data into archived foramt
+
+                    
                 end
             end
         end
@@ -69,13 +53,12 @@ clear variables;
     fprintf('ARCHIVING\n');
     clear variables;
     load('.\ACV\acvmgr.mat');
-    load('.\mat\1CONSTANTS.mat');
-    load('.\mat\2cal_simdata.mat');
-    load('.\mat\5IRDB.mat');
-    load('.\mat\5irc_simresult.mat');
+    load('.\mat\1CONSTANTS.mat', 'SC');
+    % load('.\mat\2pre_IN.mat');
+    % load('.\mat\5irc_simresult.mat', 'val_corr');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACV\\IR_ACV%d.mat', ctr_acv);
-    save(str_acv);
+    save(str_acv, 'SC', 'initg1', 'initg2', 'val_corr', 'vsc');
     save('.\ACV\acvmgr.mat', 'ctr_acv');
     clear all;
     fprintf('IR_SIM DONE\n\n');
