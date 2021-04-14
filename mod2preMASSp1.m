@@ -1,37 +1,40 @@
 % MODULUS 2pre2MASS
-%   generate multiple set of grain info and variable system config
+%   generate multiple set of grain info
 %   by MANUAL INPUT
 % DEPENDENCY
 %   1CONSTANTS.mat
-% PROMPTED INPUT
-%   noise level
-%   fringe number (with fixed wavelength)
-%   numberof rotation steps
-%   grain proportion
-%   orientations
 % FILE OUTPUT
-%   2pre_IN.mat
+%   2pre_mat.mat
 
 
-% clear variables;
-% fprintf('2preSINGLE\nLOADING\n');
+clear variables;
 load('.\mat\1CONSTANTS.mat');
 
 
 % initial grain state matrix gen
-    vec_x = linspace(1, size(DB.x_cut, 2), 6) + 0; % for vec size 21, 11, 6 etc
-    vec_y = linspace(1, size(DB.y_cut, 2), 6) + 0;
-    vec_deg = linspace(10 , size(DB.deg, 2), 18) - 0;
+    sz_vecx = 6;
+    sz_vecy = 6;
+    sz_vecdeg = 18;
+    mat_graintype = zeros(3, sz_vecx * sz_vecy * sz_vecdeg);
+    vec_x = linspace(1, size(DB.x_cut, 2), sz_vecx) + 0; % for vec size 21, 11, 6 etc
+    vec_y = linspace(1, size(DB.y_cut, 2), sz_vecy) + 0;
+    vec_deg = linspace(10 , size(DB.deg, 2), sz_vecdeg) - 0;
     for ctr_vecx = 1 : size(vec_x, 2)
         for ctr_vecy = 1 : size(vec_y, 2)
-            mat_graintype = ;
+            curreg = (((ctr_vecx - 1) * sz_vecy + (ctr_vecy - 1)) * sz_vecdeg + 1) :...
+            (((ctr_vecx - 1) * sz_vecy + (ctr_vecy - 1) + 1) * sz_vecdeg);
+            mat_graintype(1, curreg) = vec_x(ctr_vecx);
+            mat_graintype(2, curreg) = vec_y(ctr_vecy);
+            mat_graintype(3, curreg) = vec_deg;
+            % ln 1 for x
+            % ln 2 for y
+            % ln 3 for deg
         end
     end
 % end initial grain state matrix gen
 
 
 % OUTPUT save
-    fprintf('SAVING\n');
-    save('.\mat\2pre_mat.mat', '');
+    save('.\mat\2pre_mat.mat', 'mat_graintype');
     fprintf('preMASSp1 DONE\n');
 % end output save
