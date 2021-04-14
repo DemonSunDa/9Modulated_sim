@@ -1,5 +1,5 @@
 % MODULUS 5IRMETHODp3
-%   
+%   find the matching grain data
 
 
 % clear variables;
