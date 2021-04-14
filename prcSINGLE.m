@@ -6,7 +6,7 @@ clc;
 clear all;
 
 
-% main
+% main0
     mod1CONSTANTS_r3
     mod2preSINGLE
     mod2SIGNAL_r3
@@ -17,15 +17,16 @@ clear all;
 
 
 % OUTPUT save
-    fprintf('CLEARING\n');
+    fprintf('ARCHIVING\n');
     clear variables;
-    load('.\mat\1CONSTANTS');
-    load('.\mat\2cal_simdata.mat');
-    load('.\mat\5IRDB.mat');
+    load('.\ACV\acvmgr.mat');
+    load('.\mat\1CONSTANTS.mat', 'SC');
+    load('.\mat\2pre_IN.mat');
     load('.\mat\5irc_simresult.mat');
-    ctr_acv = 1;
+    ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACV\\IR_ACV%d.mat', ctr_acv);
     save(str_acv);
+    save('.\ACV\acvmgr.mat', 'ctr_acv');
     clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save

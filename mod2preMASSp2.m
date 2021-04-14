@@ -1,20 +1,27 @@
 % MODULUS 2pre2MASS
-%   generate multiple set of grain info and variable system config
+%   using pre generated info to produce one set of config
 %   by MANUAL INPUT
 % DEPENDENCY
 %   1CONSTANTS.mat
-% PROMPTED INPUT
-%   noise level
-%   fringe number (with fixed wavelength)
-%   numberof rotation steps
-%   grain proportion
-%   orientations
+%   2pre_mat.mat
 % FILE OUTPUT
 %   2pre_IN.mat
 
 
 % clear variables;
 % load('.\mat\1CONSTANTS.mat');
+% load('.\mat\2pre_mat.mat');
+
+
+% gen
+        initg1.prop = 
+        initg1.d_2d
+        initg1.x_miller
+        initg1.y_miller
+        initg1.deg
+        initg2
+        vsc
+% end gen
 
 
 % OUTPUT save
