@@ -15,7 +15,8 @@ load('.\mat\1CONSTANTS.mat');
     sz_vecx = 6;
     sz_vecy = 6;
     sz_vecdeg = 18;
-    mat_graintype = zeros(3, sz_vecx * sz_vecy * sz_vecdeg);
+    sz_mat_graintype = sz_vecx * sz_vecy * sz_vecdeg;
+    mat_graintype = zeros(3, sz_mat_graintype);
     vec_x = linspace(1, size(DB.x_cut, 2), sz_vecx) + 0; % for vec size 21, 11, 6 etc
     vec_y = linspace(1, size(DB.y_cut, 2), sz_vecy) + 0;
     vec_deg = linspace(10 , size(DB.deg, 2), sz_vecdeg) - 0;
@@ -35,6 +36,6 @@ load('.\mat\1CONSTANTS.mat');
 
 
 % OUTPUT save
-    save('.\mat\2pre_mat.mat', 'mat_graintype');
+    save('.\mat\2pre_mat.mat', 'mat_graintype', 'sz_mat_graintype');
     fprintf('preMASSp1 DONE\n');
 % end output save
