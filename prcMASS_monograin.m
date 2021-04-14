@@ -52,14 +52,14 @@ clear variables;
 % OUTPUT save
     fprintf('ARCHIVING\n');
     clear variables;
-    load('.\ACV\acvmgr.mat');
+    load('.\ACVMS\acvmgr.mat');
     load('.\mat\1CONSTANTS.mat', 'SC');
     % load('.\mat\2pre_IN.mat');
     % load('.\mat\5irc_simresult.mat', 'val_corr');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACV\\IR_ACV%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'SC', 'initg1', 'initg2', 'val_corr', 'vsc');
-    save('.\ACV\acvmgr.mat', 'ctr_acv');
+    save('.\ACVMS\acvmgr.mat', 'ctr_acv');
     clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save

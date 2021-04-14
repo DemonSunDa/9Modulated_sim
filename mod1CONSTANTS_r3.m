@@ -34,7 +34,6 @@ load('.\mat\0Ni_super_001_to_110_to_111_step_0.05.mat'); % include database
 % end database infomations
     
 % OUTPUT save
-    fprintf('SAVING\n');
     save('.\mat\1CONSTANTS.mat', 'DB', 'SC');
-    fprintf('CONSTANTS DONE\n');
+    % fprintf('CONSTANTS DONE\n');
 % end output save

@@ -36,6 +36,6 @@ load('.\mat\1CONSTANTS.mat');
 
 
 % OUTPUT save
-    save('.\mat\2pre_mat.mat', 'mat_graintype', 'sz_mat_graintype');
-    fprintf('preMASSp1 DONE\n');
+    % save('.\mat\2pre_mat.mat', 'mat_graintype', 'sz_mat_graintype');
+    % fprintf('preMASSp1 DONE\n');
 % end output save
