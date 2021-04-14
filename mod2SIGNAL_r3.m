@@ -102,5 +102,5 @@
 % OUTPUT save
     save('.\mat\2cal_simdata.mat', 'vsc', 'initg1', 'initg2', 'cal_simdata');    
     save('.\mat\2signal_simdata.mat', 'Fs', 'L_sig', 'time_sig', 'signal_simdata');
-    fprintf('SIGNAL DONE\n');
+    % fprintf('SIGNAL DONE\n');
 % end output save
