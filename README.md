@@ -21,8 +21,8 @@ Use the following commands in terminal.
 
 ```
 size(stArr_simresult) % to verify its dimensions
-% then choose desired coordinates for following 1s
-g1 = stArr_simresult(1,1,1,1,1,1).initg1
-g2 = stArr_simresult(1,1,1,1,1,1).initg2
-res = stArr_simresult(1,1,1,1,1,1).val_corr
+% then choose desired coordinates for following figures
+g1 = stArr_simresult(1,1,11,11,4,1).initg1
+g2 = stArr_simresult(1,1,11,11,4,1).initg2
+res = stArr_simresult(1,1,11,11,4,1).val_corr
 ```
