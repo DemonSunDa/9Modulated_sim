@@ -12,16 +12,17 @@ load('.\mat\1CONSTANTS.mat');
 
 
 % initial grain state matrix gen
-    sz_vecx = 5;
-    sz_vecy = 5;
-    sz_vecdeg = 18;
+    sz_vecx = 3;
+    sz_vecy = 3;
+    sz_vecdeg = 5;
     sz_mat_graintype = sz_vecx * sz_vecy * sz_vecdeg;
     mat_graintype = zeros(3, sz_mat_graintype);
-    vec_x = linspace(0, 1, sz_vecx) + 0; % for vec size 21, 11, 6 etc
-    vec_y = linspace(0, 1, sz_vecy) + 0;
-    vec_deg = linspace(10 , size(DB.deg, 2), sz_vecdeg) - 0;
-    for ctr_vecx = 1 : size(vec_x, 2)
-        for ctr_vecy = 1 : size(vec_y, 2)
+    vec_x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), sz_vecx) + 0; % for vec size 21, 11, 6 etc
+    vec_y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), sz_vecy) + 0;
+    % vec_deg = linspace(DB.deg(1) , DB.deg(size(DB.deg, 2)), sz_vecdeg) - 0;
+    vec_deg = [0, 30, 60, 90, 179];
+    for ctr_vecx = 1 : sz_vecx
+        for ctr_vecy = 1 : sz_vecy
             curreg = (((ctr_vecx - 1) * sz_vecy + (ctr_vecy - 1)) * sz_vecdeg + 1) :...
             (((ctr_vecx - 1) * sz_vecy + (ctr_vecy - 1) + 1) * sz_vecdeg);
             mat_graintype(1, curreg) = vec_x(ctr_vecx);

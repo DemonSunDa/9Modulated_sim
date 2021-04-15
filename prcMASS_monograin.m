@@ -27,8 +27,11 @@ clear all;
 
 
 % main
+    % waitbar init
+    % waitbar is for indication only, comment out if necessary
+    % f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
-    for ctr_d5 = 3 : 3 % loop for noise_level
+    for ctr_d5 = 1 : 1 % loop for noise_level
         noise_level = vec_noise_level(ctr_d5);
 
         for ctr_d4e = 4 : 4 % loop for n_step
@@ -51,6 +54,8 @@ clear all;
                             % tic;
                             mod2preMASSp2
                             fprintf('PROCESSING\t%d\t%d\t/ %d\n', ctr_d5, ctr_d2, sz_mat_graintype);
+                            % waitbar(ctr_d2 / sz_mat_graintype, f_waitbar,...
+                            %     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
                             mod2SIGNAL_r3
                             mod3FSPEC_r4
                             mod5IRMETHODp1et2_t4
@@ -58,10 +63,11 @@ clear all;
 
                             % store grain info and vsc and result into archived foramt
                             stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = struct(...
-                            'initg1', initg1,...
-                            'initg2', initg2,...
-                            'val_corr', val_corr,...
-                            'vsc', vsc);
+                                'initg1', initg1,...
+                                'initg2', initg2,...
+                                'val_corr', val_corr,...
+                                'vsc', vsc...
+                            );
                             % toc;
                         end
                     end
@@ -74,12 +80,12 @@ clear all;
 
 
 % OUTPUT save
-    save('.\mat\6stArr_simresult', 'stArr_simresult');
+    % save('.\mat\6stArr_simresult', 'stArr_simresult');
     fprintf('ARCHIVING\n');
-    clear variables;
-    load('.\ACVMS\acvmgr.mat');
-    load('.\mat\1CONSTANTS.mat', 'SC');
-    load('.\mat\6stArr_simresult');
+    % clear variables;
+    % load('.\ACVMS\acvmgr.mat');
+    % load('.\mat\1CONSTANTS.mat', 'SC');
+    % load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv');

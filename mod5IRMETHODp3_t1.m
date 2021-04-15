@@ -11,7 +11,7 @@
 
 
 max_ircorr = max(max(max(ircorr_simdata)));
-ind = find(abs(ircorr_simdata - max(max(max(ircorr_simdata)))) < 1e-3);
+ind = find(abs(ircorr_simdata - max(max(max(ircorr_simdata)))) < 5e-3);
 idx_corr = zeros(size(ind, 1), 3);
 val_corr = zeros(size(ind, 1), 4);
 for ctr = 1 : size(ind, 1)
