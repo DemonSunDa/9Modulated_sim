@@ -44,7 +44,7 @@
 
 
 % OUTPUT save
-    save('.\mat\2pre_IN.mat', 'vsc', 'initg1', 'initg2');
+    % save('.\mat\2pre_IN.mat', 'vsc', 'initg1', 'initg2');
     % fprintf('preSINGLE DONE\n');
 % end output save
 
