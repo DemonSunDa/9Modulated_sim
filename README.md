@@ -21,8 +21,8 @@ Use the following commands in terminal.
 
 ```
 size(stArr_simresult) % to verify its dimensions
-% choose desired coordinates for following 1s
-g1 = stArr_simresult(1,1,1,1,1,1).initg1;
-g2 = stArr_simresult(1,1,1,1,1,1).initg2;
+% then choose desired coordinates for following 1s
+g1 = stArr_simresult(1,1,1,1,1,1).initg1
+g2 = stArr_simresult(1,1,1,1,1,1).initg2
 res = stArr_simresult(1,1,1,1,1,1).val_corr
 ```
