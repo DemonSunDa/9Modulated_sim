@@ -14,6 +14,10 @@ clear all;
     mod3FSPEC_r4
     mod4et5preFILTER
     mod4FSMETHOD_t3
+    mod4postFSPEC
+    mod5IRMETHODp1et2_t4
+    mod5IRMETHODp3_t1
+    save('.\mat\5irc_simresult.mat', 'idx_corr', 'val_corr');
 % end main
 
 
