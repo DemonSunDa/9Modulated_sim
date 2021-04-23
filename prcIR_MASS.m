@@ -31,7 +31,7 @@ clear all;
     % waitbar is for indication only, comment out if necessary
     % f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
-    for ctr_d5 = 1 : 4 % loop for noise_level
+    for ctr_d5 = 1 : 1 % loop for noise_level
         noise_level = vec_noise_level(ctr_d5);
 
         for ctr_d4e = 4 : 4 % loop for n_step
@@ -91,6 +91,6 @@ clear all;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv');
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
-    clear all;
+    % clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save
