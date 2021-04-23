@@ -1,5 +1,5 @@
 % MODULUS
-%   this script contains the full process of a run
+%   this script contains the full process of a run for IR
 
 
 clc;
@@ -12,6 +12,7 @@ clear all;
     fprintf('PROCESSING 1\n');
     mod2SIGNAL_r3
     mod3FSPEC_r4
+    mod4et5preFILTER
     mod5IRMETHODp1et2_t4
     mod5IRMETHODp3_t1
     save('.\mat\5irc_simresult.mat', 'idx_corr', 'val_corr');

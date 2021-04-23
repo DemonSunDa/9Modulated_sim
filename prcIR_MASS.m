@@ -58,6 +58,7 @@ clear all;
                             %     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
                             mod2SIGNAL_r3
                             mod3FSPEC_r4
+                            mod4et5preFILTER
                             mod5IRMETHODp1et2_t4
                             mod5IRMETHODp3_t1
 
