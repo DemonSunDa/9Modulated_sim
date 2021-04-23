@@ -31,29 +31,29 @@ clear all;
     % waitbar is for indication only, comment out if necessary
     % f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
-    for ctr_d5 = 1 : 1 % loop for noise_level
+    for ctr_d5 = 1 : 4 % loop for noise_level
         noise_level = vec_noise_level(ctr_d5);
 
         for ctr_d4e = 4 : 4 % loop for n_step
-        % fixed onto 18 steps
+        % 18 steps when 4
+        % 36 steps when 6
             n_step = vec_n_step(ctr_d4e);
             
             for ctr_d4 = 11 : 11 % loop for n_fringe
             % fixed onto 12 fringes
                 n_fringe = vec_n_fringe(ctr_d4);
-            
 
                 for ctr_d3 = 11 : 11 % loop for g1_prop
                 % for mono grain g1_prop is constant 1 whose idx = 11
                     g1_prop = vec_g1_prop(ctr_d3);
 
-                    for ctr_d2e = 1 : 1 % loop for graintype of g2
+                    for ctr_d2e = 1 : sz_mat_graintype % loop for graintype of g2
                         
                         for ctr_d2 = 1 : sz_mat_graintype % loop for graintype of g1
 
                             % tic;
                             mod2preMASSp2
-                            fprintf('PROCESSING\t%d\t%d\t/ %d\n', ctr_d5, ctr_d2, sz_mat_graintype);
+                            fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n', ctr_d5, ctr_d4e, ctr_d4, ctr_d3, ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
                             % waitbar(ctr_d2 / sz_mat_graintype, f_waitbar,...
                             %     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
                             mod2SIGNAL_r3
@@ -83,7 +83,7 @@ clear all;
     % save('.\mat\6stArr_simresult', 'stArr_simresult');
     fprintf('ARCHIVING\n');
     % clear variables;
-    % load('.\ACVMS\acvmgr.mat');
+    load('.\ACVMS\acvmgr.mat');
     % load('.\mat\1CONSTANTS.mat', 'SC');
     % load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
