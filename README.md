@@ -15,11 +15,11 @@ Modulated components and procedures from prviously tested codes.
 
 ---
 
-## To access result from mass prc.
+## To access result from mass prc
 
 Use the following commands in terminal.
 
-```
+```matlab
 size(stArr_simresult) % to verify its dimensions
 % then choose desired coordinates for following figures
 g1 = stArr_simresult(1,1,11,11,4,1).initg1
