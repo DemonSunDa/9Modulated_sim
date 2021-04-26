@@ -21,7 +21,7 @@
     IRDB.sf_m = IRDB.sv_m / SC.lambda; % databse stored in frequency
     
     
-    % FILTER needed here
+    % * FILTER needed here 
     
     
     % storage
@@ -32,7 +32,7 @@
         zeros(size(IRDB.abfil_ft, 2), vsc.n_step, size(DB.x_cut, 2), size(DB.y_cut, 2), vsc.deg_step);
     % this is dividing 180 degrees into two dimensions d2 and d5 where d2 * d5 =180
     % thus d2 agree with n_step which is the size of simdata
-    ircorr_simdata = zeros(size(DB.deg, 2), size(DB.x_cut, 2), size(DB.y_cut, 2));
+    ircorr_simdata = zeros(size(DB.x_cut, 2), size(DB.y_cut, 2), size(DB.deg, 2));
     % store selected xcorr2 result
 % end init
 
@@ -48,7 +48,7 @@
                 IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
                 IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step),...
                     ctr_x, ctr_y, mod((ctr_deg - 1), vsc.deg_step) + 1) = 1;
-                % this one is used for xcorr
+                % * this one is used for xcorr
             end
         end
     end
@@ -56,26 +56,32 @@
 
 
 % comparison
-    irmodel = [IRDB.recon_fpspec, IRDB.recon_fpspec]; % avoid directly refer to a large structure in loops
+    irmodel = [IRDB.recon_fpspec, IRDB.recon_fpspec];
+    % avoid directly refer to a large structure in loops
+    % * use two matrices concat together to emulate the rotation
+    max_ctrx_comp = size(DB.x_cut, 2); % 21
+    max_ctry_comp = size(DB.y_cut, 2); % 21
+    max_ctrgp_comp = vsc.deg_step;
+
+    % init temp storage
+    ircorr_mat = zeros(size(abfil_fpspec_simdata, 1) + size(irmodel, 1) - 1,...
+    size(abfil_fpspec_simdata, 2) + size(irmodel, 2) - 1);
+
     deg_store = linspace(0, size(DB.deg, 2) - vsc.deg_step, vsc.n_step); % for result reordering
-    
-    max_ctrx_comp = size(DB.x_cut, 2);
-    max_ctry_comp = size(DB.y_cut, 2);
-    max_ctrgr_comp = vsc.deg_step;
+    % for n_step = 18, [0, 10, 20... 170]
+
     for ctrx_comp = 1 : max_ctrx_comp
         for ctry_comp = 1 : max_ctry_comp
-            % init temp storage
-            ircorr_mat = zeros(size(abfil_fpspec_simdata, 1) + size(irmodel, 1) - 1,...
-                size(abfil_fpspec_simdata, 2) + size(irmodel, 2) - 1, vsc.deg_step);
-            for ctrgr_comp = 1 : max_ctrgr_comp
+            for ctrgp_comp = 1 : max_ctrgp_comp
                 % tic;
-                ircorr_mat(:, :, ctrgr_comp) = xcorr2(abfil_fpspec_simdata, irmodel(:, :, ctrx_comp, ctry_comp, ctrgr_comp));
-                % temporarily store the whole xcorr result
+                ircorr_mat = xcorr2(abfil_fpspec_simdata,...
+                    irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp));
+                % temporarily store the xcorr result for this iteration only
                 % toc;
                 
                 % store
-                ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgr_comp)...
-                    = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1, ctrgr_comp);
+                ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgp_comp)...
+                    = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1);
             end
         end
     end
@@ -83,7 +89,7 @@
 
 
 % OUTPUT save
-    % save('.\mat\5IRDB.mat', 'IRDB');
-    % save('.\mat\5irc_simdata.mat', 'ircorr_simdata');
+    save('.\mat\5IRDB.mat', 'IRDB');
+    save('.\mat\5irc_simdata.mat', 'ircorr_simdata');
     % fprintf('IRMETHODp1et2 DONE\n');
 % end output save
