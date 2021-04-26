@@ -8,11 +8,11 @@
 %   5IRDB.mat
 
 
-% clear variables;
-% fprintf('5IRMETHODp1et2\nLOADING\n');
-% load('.\mat\1CONSTANTS.mat');
-% load('.\mat\2cal_simdata.mat');
-% load('.\mat\3fpspec_simdata.mat');
+% // clear variables;
+% // fprintf('5IRMETHODp1et2\nLOADING\n');
+% // load('.\mat\1CONSTANTS.mat');
+% // load('.\mat\2cal_simdata.mat');
+% // load('.\mat\3fpspec_simdata.mat');
 
 
 % init
@@ -32,7 +32,7 @@
         zeros(size(IRDB.abfil_ft, 2), vsc.n_step, size(DB.x_cut, 2), size(DB.y_cut, 2), vsc.deg_step);
     % this is dividing 180 degrees into two dimensions d2 and d5 where d2 * d5 =180
     % thus d2 agree with n_step which is the size of simdata
-    ircorr_simdata = zeros(size(DB.x_cut, 2), size(DB.y_cut, 2), size(DB.deg, 2));
+    ircorr_simdata = zeros(vsc.n_step, size(DB.x_cut, 2), size(DB.y_cut, 2), vsc.deg_step);
     % store selected xcorr2 result
 % end init
 
@@ -67,20 +67,20 @@
     ircorr_mat = zeros(size(abfil_fpspec_simdata, 1) + size(irmodel, 1) - 1,...
     size(abfil_fpspec_simdata, 2) + size(irmodel, 2) - 1);
 
-    deg_store = linspace(0, size(DB.deg, 2) - vsc.deg_step, vsc.n_step); % for result reordering
-    % for n_step = 18, [0, 10, 20... 170]
+    % // deg_store = linspace(0, size(DB.deg, 2) - vsc.deg_step, vsc.n_step); % for result reordering
+    % // for n_step = 18, [0, 10, 20... 170]
 
     for ctrx_comp = 1 : max_ctrx_comp
         for ctry_comp = 1 : max_ctry_comp
             for ctrgp_comp = 1 : max_ctrgp_comp
-                % tic;
+                % // tic;
                 ircorr_mat = xcorr2(abfil_fpspec_simdata,...
                     irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp));
                 % temporarily store the xcorr result for this iteration only
-                % toc;
+                % // toc;
                 
                 % store
-                ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgp_comp)...
+                ircorr_simdata(:, ctrx_comp, ctry_comp, ctrgp_comp)...
                     = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1);
             end
         end

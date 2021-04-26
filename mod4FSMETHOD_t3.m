@@ -9,12 +9,12 @@
 %   4peak_simdata.mat
 
 
-% clc;
-% clear variables;
-% load('.\mat\1CONSTANTS.mat');
-% load('.\mat\2cal_simdata.mat');
-% load('.\mat\2signal_simdata.mat');
-% load('.\mat\3fpspec_simdata.mat');
+% // clc;
+% // clear variables;
+% // load('.\mat\1CONSTANTS.mat');
+% // load('.\mat\2cal_simdata.mat');
+% // load('.\mat\2signal_simdata.mat');
+% // load('.\mat\3fpspec_simdata.mat');
 
 
 % init

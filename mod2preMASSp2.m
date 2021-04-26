@@ -8,9 +8,9 @@
 %   2pre_IN.mat
 
 
-% clear variables;
-% load('.\mat\1CONSTANTS.mat');
-% load('.\mat\2pre_mat.mat');
+% // clear variables;
+% // load('.\mat\1CONSTANTS.mat');
+% // load('.\mat\2pre_mat.mat');
 
 
 % gen

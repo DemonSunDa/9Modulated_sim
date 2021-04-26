@@ -7,8 +7,8 @@
 %   2pre_mat.mat
 
 
-% clear variables;
-% load('.\mat\1CONSTANTS.mat');
+% // clear variables;
+% // load('.\mat\1CONSTANTS.mat');
 
 
 % initial grain state matrix gen

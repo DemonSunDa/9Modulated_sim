@@ -13,8 +13,8 @@
 %   2pre_IN.mat
 
 
-% clear variables;
-% load('.\mat\1CONSTANTS.mat');
+% // clear variables;
+% // load('.\mat\1CONSTANTS.mat');
 
 
 % INPUT initial state

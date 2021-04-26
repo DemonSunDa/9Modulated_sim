@@ -8,9 +8,9 @@
 %   2signal_simdata.mat
 
 
-% clear variables;
-% load('.\mat\1CONSTANTS.mat');
-% load('.\mat\2pre_IN.mat');
+% // clear variables;
+% // load('.\mat\1CONSTANTS.mat');
+% // load('.\mat\2pre_IN.mat');
 
 
 % init

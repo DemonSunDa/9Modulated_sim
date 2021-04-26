@@ -9,11 +9,11 @@
 %   3fpsepec_simdata.mat
 
 
-% clear variables;
-% fprintf('3FSPEC\nLOADING\n');
-% load('.\mat\1CONSTANTS.mat');
-% load('.\mat\2cal_simdata.mat');
-% load('.\mat\2signal_simdata.mat');
+% // clear variables;
+% // fprintf('3FSPEC\nLOADING\n');
+% // load('.\mat\1CONSTANTS.mat');
+% // load('.\mat\2cal_simdata.mat');
+% // load('.\mat\2signal_simdata.mat');
 
 
 % init

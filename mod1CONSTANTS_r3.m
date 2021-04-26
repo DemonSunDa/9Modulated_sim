@@ -6,8 +6,8 @@
 %   1CONSTANTS.mat
 
 
-% clear variables;
-% fprintf('1CONSTANTS\nLOADING\n');
+% // clear variables;
+% // fprintf('1CONSTANTS\nLOADING\n');
 load('.\mat\0Ni_super_001_to_110_to_111_step_0.05.mat'); % include database
 
 
