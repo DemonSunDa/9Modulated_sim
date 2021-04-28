@@ -22,15 +22,15 @@
     fprintf('Wavelength = %.2f um\n', SC.lambda * 1e6);
     fprintf('Distance from centre of generation patch to detection beam = %.2f um\n', SC.d_gc2d * 1e6);
     
-    vsc.noise_level = input('Noise level (in percentage) = ') / 100;
+    vsc.noise_level = 0; % todo input('Noise level (in percentage) = ') / 100;
     
-    vsc.n_fringe = input('Fringe number = '); % when 10
+    vsc.n_fringe = 12; % todo input('Fringe number = '); % when 10
     vsc.patch = SC.lambda * vsc.n_fringe; % equal to 200e-6
     
-    vsc.n_step = input('Number of rotation steps = ');
+    vsc.n_step = 18; % todo input('Number of rotation steps = ');
     vsc.deg_step = 180 / vsc.n_step;
     
-    initg1.prop = input('Grain 1 proportion (in percentage) = ') / 100;
+    initg1.prop = 1; % todo input('Grain 1 proportion (in percentage) = ') / 100;
     initg2.prop = 1 - initg1.prop;
     initg1.d_2d = SC.d_gc2d - initg2.prop * vsc.patch / 2; % distance from centre of g1 to detection beam
     initg2.d_2d = SC.d_gc2d + initg1.prop * vsc.patch / 2; % distance from centre of g2 to detection beam
@@ -39,7 +39,10 @@
     fprintf('(the grain closer to detection beam)\n');
     [initg1.x_miller, initg1.y_miller, initg1.deg] = gparams_IN();
     fprintf('INPUT GRAIN2 ORIENTATION\n');
-    [initg2.x_miller, initg2.y_miller, initg2.deg] = gparams_IN();
+    % todo [initg2.x_miller, initg2.y_miller, initg2.deg] = gparams_IN();
+    initg2.x_miller = 0;
+    initg2.y_miller = 0;
+    initg2.deg = 0;
 % end input initial state
 
 

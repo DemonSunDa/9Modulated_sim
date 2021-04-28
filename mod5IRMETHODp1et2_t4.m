@@ -29,10 +29,10 @@
         zeros(size(IRDB.abfil_ft, 2), size(DB.deg, 2), size(DB.x_cut, 2), size(DB.y_cut, 2));
     % storage only for filtered length
     IRDB.recon_fpspec =...
-        zeros(size(IRDB.abfil_ft, 2), vsc.n_step, size(DB.x_cut, 2), size(DB.y_cut, 2), vsc.deg_step);
-    % this is dividing 180 degrees into two dimensions d2 and d5 where d2 * d5 =180
+        zeros(size(IRDB.abfil_ft, 2), vsc.n_step, vsc.deg_step, size(DB.x_cut, 2), size(DB.y_cut, 2));
+    % this is dividing 180 degrees into two dimensions d2 and d3 where d2 * d3 =180
     % thus d2 agree with n_step which is the size of simdata
-    ircorr_simdata = zeros(vsc.n_step, size(DB.x_cut, 2), size(DB.y_cut, 2), vsc.deg_step);
+    ircorr_simdata = zeros(vsc.n_step, vsc.deg_step, size(DB.x_cut, 2), size(DB.y_cut, 2));
     % store selected xcorr2 result
 % end init
 
@@ -47,7 +47,7 @@
                 
                 IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
                 IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step),...
-                    ctr_x, ctr_y, mod((ctr_deg - 1), vsc.deg_step) + 1) = 1;
+                    mod((ctr_deg - 1), vsc.deg_step) + 1, ctr_x, ctr_y) = 1;
                 % * this one is used for xcorr
             end
         end
@@ -75,12 +75,12 @@
             for ctrgp_comp = 1 : max_ctrgp_comp
                 % // tic;
                 ircorr_mat = xcorr2(abfil_fpspec_simdata,...
-                    irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp));
+                    irmodel(:, :, ctrgp_comp, ctrx_comp, ctry_comp));
                 % temporarily store the xcorr result for this iteration only
                 % // toc;
                 
                 % store
-                ircorr_simdata(:, ctrx_comp, ctry_comp, ctrgp_comp)...
+                ircorr_simdata(:, ctrgp_comp, ctrx_comp, ctry_comp)...
                     = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1);
             end
         end
