@@ -22,18 +22,19 @@ ind = find(ircorr_simdata == max_ircorr);
 
 for ctr_res = 1 : size(ind, 1) % for every maxima found
     [d1, d2, d3, d4] = ind2sub(size(ircorr_simdata), ind(ctr_res));
-    % * d1 for angle in one deg group
-    % * d2 for deg group
+    % * d1 for angle in one deg group redeg(,:)
+    % * d2 for deg group redeg(:,)
     % * d3 for x
     % * d4 for y
     idx_corr(ctr_res, 1) = d1;
     idx_corr(ctr_res, 2) = d2;
     idx_corr(ctr_res, 3) = d3;
     idx_corr(ctr_res, 4) = d4;
-
+    
     val_corr(ctr_res, 1) = DB.x_cut(d3);
     val_corr(ctr_res, 2) = DB.y_cut(d4);
-    val_corr(ctr_res, 3) = DB.deg((d1 - 1) * vsc.deg_step + d2);
+    val_corr(ctr_res, 3) = IRDB.redeg(d2, d1);
+    % val_corr(ctr_res, 3) = DB.deg((d1 - 1) * vsc.deg_step + d2);
     val_corr(ctr_res, 4) = ircorr_simdata(d1, d2, d3, d4);
 end
 

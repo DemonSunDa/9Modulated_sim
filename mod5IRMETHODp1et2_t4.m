@@ -34,6 +34,9 @@
     % thus d2 agree with n_step which is the size of simdata
     ircorr_simdata = zeros(vsc.n_step, vsc.deg_step, size(DB.x_cut, 2), size(DB.y_cut, 2));
     % store selected xcorr2 result
+    
+    IRDB.redeg = reshape(DB.deg, vsc.deg_step, vsc.n_step);
+    % each row is a group
 % end init
 
 
@@ -41,15 +44,25 @@
 % with filter reconstruction and reorder
     for ctr_x = 1 : size(DB.x_cut, 2)
         for ctr_y = 1 : size(DB.y_cut, 2)
-            for ctr_deg = 1 : size(DB.deg, 2)
-                freq = IRDB.sf_m(ctr_deg, ctr_x, ctr_y);
-                freq_idx = find(abs(IRDB.abfil_ft - freq) < (fp_res / 2)); % find frequency on IRDB.abfil_ft
-                
-                IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
-                IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step),...
-                    mod((ctr_deg - 1), vsc.deg_step) + 1, ctr_x, ctr_y) = 1;
-                % * this one is used for xcorr
+            for ctr_redeg_row = 1 : vsc.deg_step
+                for ctr_redeg_col = 1 : vsc.n_step
+                    freq = IRDB.sf_m(IRDB.redeg(ctr_redeg_row, ctr_redeg_col) + 1,...
+                        ctr_x, ctr_y);
+                    freq_idx = find(abs(IRDB.abfil_ft - freq) < (fp_res / 2));
+                    IRDB.recon_fpspec(freq_idx, ctr_redeg_col, ctr_redeg_row,...
+                        ctr_x, ctr_y) = 1;
+                    % * this one is used for xcorr2
+                end
             end
+%             for ctr_deg = 1 : size(DB.deg, 2)
+%                 freq = IRDB.sf_m(ctr_deg, ctr_x, ctr_y);
+%                 freq_idx = find(abs(IRDB.abfil_ft - freq) < (fp_res / 2)); % find frequency on IRDB.abfil_ft
+%                 
+%                 IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
+%                 IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step),...
+%                     mod((ctr_deg - 1), vsc.deg_step) + 1, ctr_x, ctr_y) = 1;
+%                 % * this one is used for xcorr2
+%             end
         end
     end
 % end f spec model gen
