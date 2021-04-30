@@ -8,6 +8,7 @@
 % load('2cal_simdata.mat');
 % load('5IRDB.mat');
 % load('IR_ACV1.mat');
+% DB.deg = circshift(fliplr(DB.deg),5);
 
 
 max_ircorr = max(max(max(ircorr_simdata)));
@@ -21,11 +22,11 @@ for ctr = 1 : size(ind, 1)
     idx_corr(ctr, 3) = I3;
     val_corr(ctr, 1) = DB.x_cut(I1);
     val_corr(ctr, 2) = DB.y_cut(I2);
-    val_corr(ctr, 3) = DB.deg(I3);
+    val_corr(ctr, 3) = DB.deg(I3)+180/n_step;
     val_corr(ctr, 4) = ircorr_simdata(I1, I2, I3);
 end
-
-
+mat_graintype.'
+val_corr(:,3)
 % OUTPUT save
     save('.\mat\5irc_simresult.mat', 'idx_corr', 'val_corr');
     % fprintf('IRMETHODp3 DONE\n');

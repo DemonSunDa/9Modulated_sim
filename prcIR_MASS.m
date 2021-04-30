@@ -2,11 +2,14 @@
 %   this script contains the full process of multiple runs
 %   with no prompted input
 
-
-clc;
+clc
 clear all;
 
+vec_deg_all = 0:15;
 
+for k =1:length(vec_deg_all)
+    vec_deg = vec_deg_all(k);
+    
 % init
     mod1CONSTANTS_r3
     mod2preMASSp1
@@ -37,7 +40,7 @@ clear all;
         for ctr_d4e = 4 : 4 % loop for n_step
         % 18 steps when 4
         % 36 steps when 6
-            n_step = vec_n_step(ctr_d4e);
+            n_step = 36;%vec_n_step(ctr_d4e);
             
             for ctr_d4 = 11 : 11 % loop for n_fringe
             % fixed onto 12 fringes
@@ -53,7 +56,7 @@ clear all;
 
                             % tic;
                             mod2preMASSp2
-                            fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n', ctr_d5, ctr_d4e, ctr_d4, ctr_d3, ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
+%                             fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n', ctr_d5, ctr_d4e, ctr_d4, ctr_d3, ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
                             % waitbar(ctr_d2 / sz_mat_graintype, f_waitbar,...
                             %     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
                             mod2SIGNAL_r3
@@ -82,15 +85,16 @@ clear all;
 
 % OUTPUT save
     % save('.\mat\6stArr_simresult', 'stArr_simresult');
-    fprintf('ARCHIVING\n');
+%     fprintf('ARCHIVING\n');
     % clear variables;
-    load('.\ACVMS\acvmgr.mat');
+    load('ACVMS/acvmgr.mat');
     % load('.\mat\1CONSTANTS.mat', 'SC');
     % load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv');
-    save('.\ACVMS\acvmgr.mat', 'ctr_acv');
+    save('ACVMS/acvmgr.mat', 'ctr_acv');
     % clear all;
-    fprintf('IR_SIM DONE\n\n');
+%     fprintf('IR_SIM DONE\n\n');
 % end output save
+end

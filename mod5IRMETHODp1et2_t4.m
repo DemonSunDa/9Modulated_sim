@@ -39,19 +39,23 @@
 
 % f spec model gen
 % with filter reconstruction and reorder
-    for ctr_x = 1 : size(DB.x_cut, 2)
-        for ctr_y = 1 : size(DB.y_cut, 2)
-            for ctr_deg = 1 : size(DB.deg, 2)
-                freq = IRDB.sf_m(ctr_deg, ctr_x, ctr_y);
-                freq_idx = find(abs(IRDB.abfil_ft - freq) < (fp_res / 2)); % find frequency on IRDB.abfil_ft
-                
-                IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
-                IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step),...
-                    ctr_x, ctr_y, mod((ctr_deg - 1), vsc.deg_step) + 1) = 1;
-                % * this one is used for xcorr
-            end
+for ctr_x = 1 : size(DB.x_cut, 2)
+    for ctr_y = 1 : size(DB.y_cut, 2)
+        for ctr_deg = 1 : size(DB.deg, 2)
+            freq = IRDB.sf_m(ctr_deg, ctr_x, ctr_y);
+            freq_idx = find(abs(IRDB.abfil_ft - freq) < (fp_res / 2)); % find frequency on IRDB.abfil_ft
+            IRDB.abfil_fpspec(freq_idx, ctr_deg, ctr_x, ctr_y) = 1;
+            IRDB.recon_fpspec(freq_idx, ceil(ctr_deg / vsc.deg_step), ctr_x, ctr_y, mod((ctr_deg - 1), vsc.deg_step) + 1) = 1;
         end
+        % * this one is used for xcorr
+%         IRDB.recon_fpspec(:,:,ctr_x, ctr_y,1) = squeeze(IRDB.abfil_fpspec(:, 1:10:end, ctr_x, ctr_y));
+%         for kk=2:10
+%             IRDB.recon_fpspec(:,:,ctr_x, ctr_y,kk) = circshift(squeeze(IRDB.recon_fpspec(:,:,ctr_x, ctr_y,1)),[1 kk]);
+%             
+%         end
+        
     end
+end
 % end f spec model gen
 
 
@@ -78,10 +82,17 @@
                     irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp));
                 % temporarily store the xcorr result for this iteration only
                 % toc;
+%                 figure(1)
+%                 subplot(1,3,1);imagesc(abfil_fpspec_simdata);
+%                 subplot(1,3,2);imagesc(squeeze(irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp)))
+% %                 subplot(1,3,3);imagesc(ircorr_mat)
+% title([num2str(ctrx_comp), ', ',num2str(ctry_comp), ', ',num2str(ctrgp_comp)])
+%                 drawnow;pause(0.3)
                 
                 % store
                 ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgp_comp)...
-                    = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1);
+                    = fliplr(ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1));
+                
             end
         end
     end
