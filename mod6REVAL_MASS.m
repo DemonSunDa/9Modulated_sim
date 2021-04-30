@@ -12,7 +12,6 @@ clear variables;
 load('.\ACVMS\IR_ACV10.mat');
 
 % init
-    sz_simresult = size(stArr_simresult);
     % storage
     reval(1 : size(val_corr, 1)) = struct('idc_eff', '',...
         'R11', 0, 'R21', 0, 'corr1', 0,...
@@ -31,18 +30,30 @@ load('.\ACVMS\IR_ACV10.mat');
     % [eval_R, eval_phi, eval_tau] = get_R_value(plane_res, plane_sim, plane_res_deg, plane_sim_deg);
     if ndims(val_corr) == 2
         for ctr_res = 1 : size(val_corr, 1)
-            plane_res1 = [val_corr(ctr_res, 1), val_corr(ctr_res, 2), 1];
-            plane_res1_deg = val_corr(ctr_res, 3);
+            for ctr_d1 =
+                for ctr_d2 =
+                    for ctr_d3 =
+                        for ctr_d4 =
+                            for ctr_d5 =
+                                plane_res1 = [val_corr(ctr_res, 1), val_corr(ctr_res, 2), 1];
+                                plane_res1_deg = val_corr(ctr_res, 3);
 
-            [evalR11, ~, ~] =...
-                get_R_value(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
-            [evalR21, ~, ~] =...
-                get_R_value(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
+                                [evalR11, ~, ~] =...
+                                    get_R_value(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
+                                [evalR21, ~, ~] =...
+                                    get_R_value(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
 
-            % store
-            reval(ctr_res).R11 = evalR11;
-            reval(ctr_res).R21 = evalR21;
-            reval(ctr_res).corr1 = val_corr(ctr_res, 4);
+                                % store
+                                reval(ctr_res).R11 = evalR11;
+                                reval(ctr_res).R21 = evalR21;
+                                reval(ctr_res).corr1 = val_corr(ctr_res, 4);
+                            end
+                        end
+                    end
+                end
+            end
+
+            
         end
     elseif ndims(val_corr) == 3
         for ctr_res = 1 : size(val_corr, 1)
@@ -70,3 +81,12 @@ load('.\ACVMS\IR_ACV10.mat');
         end
     end
 % end process
+
+
+% OUTPUT save
+fprintf('ARCHIVING\n');
+str_acv = sprintf('.\\ACVMS\\IR_REVAL%d.mat', ctr_acv);
+save(str_acv, 'reval');
+%     clear all;
+fprintf('IR_SIM DONE\n\n');
+% end output save
