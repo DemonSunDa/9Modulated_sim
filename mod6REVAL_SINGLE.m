@@ -4,7 +4,7 @@
 % DEPENDENCY
 %   ACVSG
 % FILE OUTPUT
-%   ACVSG\IR_REP[num].mat
+%   ACVSG\IR_REVAL[num].mat
 
 
 clc;
@@ -25,7 +25,7 @@ load('.\ACVSG\IR_ACV3.mat');
     plane_sim2 = [initg2.x_miller, initg2.y_miller, 1];
     plane_sim2_deg = initg2.deg;
     % storage
-    reval(1 : size(val_corr, 1)) = struct(...
+    reval(1 : size(val_corr, 1)) = struct('idc_eff', '',...
         'R11', 0, 'R21', 0, 'corr1', 0,...
         'R12', 0, 'R22', 0, 'corr2', 0);
 % end init
@@ -36,6 +36,7 @@ load('.\ACVSG\IR_ACV3.mat');
     % without FSMETHOD =>> 1 ir result
     % with FSMethod =>> 2 ir result
     if ndims(val_corr) == 2
+        reval.idc_eff = 'Result 1 effective.';
         for ctr_res = 1 : size(val_corr, 1)
             plane_res1 = [val_corr(ctr_res, 1), val_corr(ctr_res, 2), 1];
             plane_res1_deg = val_corr(ctr_res, 3);
@@ -51,6 +52,7 @@ load('.\ACVSG\IR_ACV3.mat');
             reval(ctr_res).corr1 = val_corr(ctr_res, 4);
         end
     elseif ndims(val_corr) == 3
+        reval.idc_eff = 'Result 1 and 2 effective.';
         for ctr_res = 1 : size(val_corr, 1)
             plane_res1 = [val_corr(ctr_res, 1, 1), val_corr(ctr_res, 2, 1), 1];
             plane_res1_deg = val_corr(ctr_res, 3, 1);
@@ -76,3 +78,12 @@ load('.\ACVSG\IR_ACV3.mat');
         end
     end
 % end process
+
+
+% OUTPUT save
+    fprintf('ARCHIVING\n');
+    str_acv = sprintf('.\\ACVSG\\IR_REVAL%d.mat', ctr_acv);
+    save(str_acv, 'reval');
+%     clear all;
+    fprintf('IR_SIM DONE\n\n');
+% end output save
