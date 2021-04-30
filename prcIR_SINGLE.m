@@ -20,11 +20,7 @@ clear all;
 
 % OUTPUT save
     fprintf('ARCHIVING\n');
-    clear variables;
     load('.\ACVSG\acvmgr.mat');
-    load('.\mat\1CONSTANTS.mat', 'SC');
-    load('.\mat\2pre_IN.mat');
-    load('.\mat\5irc_simresult.mat', 'val_corr');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'vsc');
