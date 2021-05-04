@@ -25,6 +25,6 @@ clear all;
     str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'vsc');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
-    clear all;
+    % clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save

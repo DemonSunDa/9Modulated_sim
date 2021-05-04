@@ -81,7 +81,7 @@
                 
                 % store
                 ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgp_comp)...
-                    = ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1);
+                    = fliplr(ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1));
             end
         end
     end
