@@ -47,10 +47,3 @@
     % save('.\mat\2pre_IN.mat', 'vsc', 'initg1', 'initg2');
     % fprintf('preSINGLE DONE\n');
 % end output save
-
-
-function [x, y, deg] = gparams_IN(~)
-    x = input('    Miller index x = ');
-    y = input('    Miller index y = ');
-    deg = input('    degree = ');
-end

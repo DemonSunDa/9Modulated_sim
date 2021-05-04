@@ -89,7 +89,7 @@
 
 
 % OUTPUT save
-    save('.\mat\5IRDB.mat', 'IRDB');
-    save('.\mat\5irc_simdata.mat', 'ircorr_simdata');
+    % save('.\mat\5IRDB.mat', 'IRDB');
+    % save('.\mat\5irc_simdata.mat', 'ircorr_simdata');
     % fprintf('IRMETHODp1et2 DONE\n');
 % end output save
