@@ -11,10 +11,10 @@ clear all;
     mod1CONSTANTS_r3
     mod2preMASSp1
 
-    vec_g1_prop = (0 : 0.1 : 1);
-    vec_n_fringe = (2 : 1 : 12);
-    vec_n_step = [9, 12, 15, 18, 30, 36];
-    vec_noise_level = (0 : 0.05 : 0.5);
+    vec.g1_prop = (0 : 0.1 : 1);
+    vec.n_fringe = (2 : 1 : 12);
+    vec.n_step = [9, 12, 15, 18, 30, 36];
+    vec.noise_level = (0 : 0.05 : 0.5);
     
     % define expecting size of the result    
     sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 1];
@@ -24,10 +24,14 @@ clear all;
     % * ctr_d4  n_fringe
     % * ctr_d4e n_step
     % * ctr_d5  noise_level
-    sel_g1_prop = [11];
-    sel_n_fringe = [11];
-    sel_n_step = [4];
-    sel_noise_level = [1];
+    sel.g1_prop = [11];
+    % * 1 (mono grain) when 11
+    sel.n_fringe = [11];
+    % * 12 fringes when 11
+    sel.n_step = [4];
+    % * 18 steps when 4
+    sel.noise_level = [1];
+    % * 0 noise when 1
     
     % storage
     stArr_simresult(1:sz_mat_graintype, 1:1, 1:1, 1:1, 1:1, 1:1) =struct(...
@@ -45,22 +49,18 @@ clear all;
     % // f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
     for ctr_d5 = 1 : sz_simresult(6) % loop for noise_level
-        noise_level = vec_noise_level(sel_noise_level(ctr_d5));
+        noise_level = vec.noise_level(sel.noise_level(ctr_d5));
 
         for ctr_d4e = 1 : sz_simresult(5) % loop for n_step
-            n_step = vec_n_step(sel_n_step(ctr_d4e));
-            % 18 steps when 1 + 3
-            % 36 steps when 1 + 5
+            n_step = vec.n_step(sel.n_step(ctr_d4e));
             
             for ctr_d4 = 1 : sz_simresult(4) % loop for n_fringe
-                n_fringe = vec_n_fringe(sel_n_fringe(ctr_d4));
-                % 12 fringes when 11
+                n_fringe = vec.n_fringe(sel.n_fringe(ctr_d4));
 
                 for ctr_d3 = 1 : sz_simresult(3) % loop for g1_prop
-                    g1_prop = vec_g1_prop(sel_g1_prop(ctr_d3));
+                    g1_prop = vec.g1_prop(sel.g1_prop(ctr_d3));
                     % for mono grain g1_prop is constant 1 whose idx = 11
-                    % 10
-
+                    
                     for ctr_d2e = 1 : sz_simresult(2) % loop for graintype of g2
                         
                         for ctr_d2 = 1 : sz_simresult(1) % loop for graintype of g1
@@ -103,7 +103,7 @@ clear all;
     % // load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
-    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv');
+    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('IR_SIM DONE\n\n');

@@ -14,10 +14,10 @@
 % initial grain state matrix gen
     % vec_x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
     % vec_y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
-    % vec_deg = linspace(1, 180, sz_vecdeg) - 0;
+    vec_deg = linspace(0, 179, 180) - 0;
     vec_x = [0];
     vec_y = [0];
-    vec_deg = [1];
+    % vec_deg = [155];
     
     sz_vecx = size(vec_x, 2);
     sz_vecy = size(vec_y, 2);
