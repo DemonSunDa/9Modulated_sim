@@ -7,9 +7,9 @@
 %   ACVMS\IR_REVAL[num].mat
 
 
-clc;
-clear variables;
-load('.\ACVMS\IR_ACV27.mat');
+% clc;
+% clear variables;
+% load('.\ACVMS\IR_ACV25.mat');
 
 % init
     % storage
@@ -43,7 +43,7 @@ load('.\ACVMS\IR_ACV27.mat');
         for ctr_d2e = 1 : sz_simresult(2)
         for ctr_d2 = 1 : sz_simresult(1)
         for ctr_res = 1 : size(stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr, 1)
-            reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).idc_eff = 'Result 1 effective.'
+            reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).idc_eff = 'Result 1 effective.';
             
             plane_sim1 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg1.x_miller,...
             stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg1.y_miller, 1];
@@ -52,7 +52,7 @@ load('.\ACVMS\IR_ACV27.mat');
             stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg2.y_miller, 1];
             plane_sim2_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg2.deg;
             
-            plane_res1 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 1), stArr_simresult(1,1,1,1,1,1).val_corr(ctr_res, 2), 1];
+            plane_res1 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 1), stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 2), 1];
             plane_res1_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 3);
 
             [evalR11, ~, ~] =...
@@ -100,9 +100,9 @@ load('.\ACVMS\IR_ACV27.mat');
 
 
 % OUTPUT save
-    fprintf('ARCHIVING\n');
-    str_acv = sprintf('.\\ACVMS\\IR_REVAL%d.mat', ctr_acv);
-    save(str_acv, 'reval');
+    % fprintf('ARCHIVING\n');
+    % str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
+    % save(str_acv, 'reval');
     % clear all;
-    fprintf('IR_REVAL DONE\n\n');
+    % fprintf('IR_REVAL DONE\n\n');
 % end output save

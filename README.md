@@ -25,53 +25,43 @@ res = stArr_simresult(1,1,11,11,4,1).val_corr
 
 ## ACVMS Record  
 
----
+-`IR_ACV1.mat` First test.  
+-`IR_ACV2.mat` Small acv with 0 noise.  
+-`IR_ACV3.mat` Small acv with 5% noise.  
+-`IR_ACV4.mat` Small acv with 10% noise.  
+-`IR_ACV5.mat` Mismatch noticed, test with smaller output array.  
+-`IR_ACV6.mat` Mismatch noticed, test with smaller output array.  
+-`IR_ACV7.mat` Correction of index and value of deg. At deg = 179, problem occurs.  
+-`IR_ACV8.mat` Correction of index and value of deg.  
+-`IR_ACV9.mat` Increase the tolerance for finding the maximum corr result.  
+-`IR_ACV10.mat` With 0 noise and 5 angles, testing the correction. Problem not solved, when introducing non-0 deg, obvious deviation.  
 
 IR_ACV25.mat  
 
----
-
-noise_level = 0  
-n_fringe = 12  
-n_step = 18  
-g1_prop = 1  
-initg1.x_miller = 0  
-initg1.y_miller = 0  
-initg1.deg = [1,180]  
-initg2.x_miller = 0  
-initg2.y_miller = 0  
-initg2.deg = 0  
-
----
+```matlab
+noise_level = 0;
+n_fringe = 12;
+n_step = 18;
+g1_prop = 1;
+initg1.x_miller = 0;
+initg1.y_miller = 0;
+initg1.deg = [0 : 179];
+initg2.x_miller = 0;
+initg2.y_miller = 0;
+initg2.deg = 0;
+```
 
 IR_ACV26.mat  
 
----
-
-noise_level = 0  
-n_fringe = 12  
-n_step = 18  
-g1_prop = 1  
-initg1.x_miller = 0  
-initg1.y_miller = 0  
-initg1.deg = [1,180]  
-initg2.x_miller = 0  
-initg2.y_miller = 0  
-initg2.deg = 0  
-
----
-
-IR_ACV27.mat  
-
----
-
-noise_level = 0  
-n_fringe = 12  
-n_step = 18  
-g1_prop = 1  
-initg1.x_miller = 0  
-initg1.y_miller = 0  
-initg1.deg = [0,179]  
-initg2.x_miller = 0  
-initg2.y_miller = 0  
-initg2.deg = 0  
+```matlab
+noise_level = [0, 0.05, 0.1, 0.15, 0.2];
+n_fringe = 12;
+n_step = 18;
+g1_prop = 1;
+initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.deg = [0 : 179];
+initg2.x_miller = 0;
+initg2.y_miller = 0;
+initg2.deg = 0;
+```

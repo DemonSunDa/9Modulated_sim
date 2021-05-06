@@ -21,7 +21,7 @@
     vsc.deg_step = 180 / vsc.n_step;
 
     initg1.prop = g1_prop;
-    initg2.prop = g1_prop;
+    initg2.prop = 1 - g1_prop;
     initg1.d_2d = SC.d_gc2d - initg2.prop * vsc.patch / 2;
     initg2.d_2d = SC.d_gc2d + initg1.prop * vsc.patch / 2;
     
