@@ -58,22 +58,3 @@ initg1.deg = [1,180]
 initg2.x_miller = 0  
 initg2.y_miller = 0  
 initg2.deg = 0  
-
----
-
-IR_ACV27.mat  
-
----
-
-noise_level = 0  
-n_fringe = 12  
-n_step = 18  
-g1_prop = 1  
-initg1.x_miller = 0  
-initg1.y_miller = 0  
-initg1.deg = [0,179]  
-initg2.x_miller = 0  
-initg2.y_miller = 0  
-initg2.deg = 0  
-
-testing
