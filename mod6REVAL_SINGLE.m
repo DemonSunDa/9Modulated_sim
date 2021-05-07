@@ -25,9 +25,13 @@ load('.\ACVSG\IR_ACV3.mat');
     plane_sim2 = [initg2.x_miller, initg2.y_miller, 1];
     plane_sim2_deg = initg2.deg;
     % storage
-    reval(1 : size(val_corr, 1)) = struct('idc_eff', '',...
-        'R11', 0, 'R21', 0, 'corr1', 0,...
-        'R12', 0, 'R22', 0, 'corr2', 0);
+    reval = struct('idc_eff', '',...
+        'R11', zeros(1, size(val_corr, 1)),...
+        'R21', zeros(1 : size(val_corr, 1)),...
+        'corr1', zeros(1 : size(val_corr, 1)),...
+        'R12', zeros(1, size(val_corr, 1)),...
+        'R22', zeros(1 : size(val_corr, 1)),...
+        'corr2', zeros(1 : size(val_corr, 1)));
 % end init
 
 
@@ -47,9 +51,9 @@ load('.\ACVSG\IR_ACV3.mat');
                 get_R_value(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
 
             % store
-            reval(ctr_res).R11 = evalR11;
-            reval(ctr_res).R21 = evalR21;
-            reval(ctr_res).corr1 = val_corr(ctr_res, 4);
+            reval.R11(ctr_res) = evalR11;
+            reval.R21(ctr_res) = evalR21;
+            reval.corr1(ctr_res) = val_corr(ctr_res, 4);
         end
     elseif ndims(val_corr) == 3
         reval.idc_eff = 'Result 1 and 2 effective.';
@@ -69,12 +73,12 @@ load('.\ACVSG\IR_ACV3.mat');
                 get_R_value(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
 
             % store
-            reval(ctr_res).R11 = evalR11;
-            reval(ctr_res).R21 = evalR21;
-            reval(ctr_res).corr1 = val_corr(ctr_res, 4, 1);
-            reval(ctr_res).R12 = evalR12;
-            reval(ctr_res).R22 = evalR22;
-            reval(ctr_res).corr2 = val_corr(ctr_res, 4, 2);
+            reval.R11(ctr_res) = evalR11;
+            reval.R21(ctr_res) = evalR21;
+            reval.corr1(ctr_res) = val_corr(ctr_res, 4, 1);
+            reval.R12(ctr_res) = evalR12;
+            reval.R22(ctr_res) = evalR22;
+            reval.corr2(ctr_res) = val_corr(ctr_res, 4, 2);
         end
     end
 % end process
@@ -84,6 +88,6 @@ load('.\ACVSG\IR_ACV3.mat');
     fprintf('ARCHIVING\n');
     str_acv = sprintf('.\\ACVSG\\IR_REVAL%d.mat', ctr_acv);
     save(str_acv, 'reval');
-%     clear all;
-    fprintf('IR_SIM DONE\n\n');
+    % clear all;
+    fprintf('IR_REVAL DONE\n\n');
 % end output save

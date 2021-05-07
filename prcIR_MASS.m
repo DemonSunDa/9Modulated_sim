@@ -9,15 +9,25 @@ clear all;
 
 % init
     mod1CONSTANTS_r3
-    mod2preMASSp1
+    
+    % define loop info
+        vec.g1_prop = (0 : 0.1 : 1);
+        vec.n_fringe = (2 : 1 : 12);
+        vec.n_step = [9, 12, 15, 18, 30, 36];
+        vec.noise_level = (0 : 0.05 : 0.5);
 
-    vec.g1_prop = (0 : 0.1 : 1);
-    vec.n_fringe = (2 : 1 : 12);
-    vec.n_step = [9, 12, 15, 18, 30, 36];
-    vec.noise_level = (0 : 0.05 : 0.5);
+        % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
+        % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
+        vec.deg = linspace(0, 179, 180) - 0;
+        vec.x = [0, 0.25, 0.5, 0.75, 1];
+        vec.y = [0, 0.25, 0.5, 0.75, 1];
+        % vec.deg = [155];
+    % end define loop info
+    
+    mod2preMASSp1
     
     % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 1];
+    sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 2];
     % * ctr_d2  graintype of g1
     % * ctr_d2e graintype of g2
     % * ctr_d3  g1_prop
@@ -30,7 +40,7 @@ clear all;
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
-    sel.noise_level = [1];
+    sel.noise_level = [6,7];
     % * 0 noise when 1
     
     % storage
@@ -91,6 +101,8 @@ clear all;
         end
     end
     toc;
+    
+    mod6REVAL_MASS
 % end main
 
 
@@ -103,7 +115,7 @@ clear all;
     % // load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
-    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
+    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult', 'reval');
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('IR_SIM DONE\n\n');
