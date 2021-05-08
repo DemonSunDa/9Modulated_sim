@@ -39,59 +39,89 @@ res = stArr_simresult(1,1,11,11,4,1).val_corr
 IR_ACV25.mat  
 
 ```matlab
-noise_level = 0;
-n_fringe = 12;
-n_step = 18;
-g1_prop = 1;
-initg1.x_miller = 0;
-initg1.y_miller = 0;
+noise_level = [0];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
+initg1.x_miller = [0];
+initg1.y_miller = [0];
 initg1.deg = [0 : 179];
-initg2.x_miller = 0;
-initg2.y_miller = 0;
-initg2.deg = 0;
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
 ```
 
 IR_ACV26.mat  
 
 ```matlab
 noise_level = [0, 0.05, 0.1, 0.15, 0.2];
-n_fringe = 12;
-n_step = 18;
-g1_prop = 1;
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
 initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.deg = [0 : 179];
-initg2.x_miller = 0;
-initg2.y_miller = 0;
-initg2.deg = 0;
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
 ```
 
 IR_ACV27.mat  
 
 ```matlab
 noise_level = [0.25, 0.3];
-n_fringe = 12;
-n_step = 18;
-g1_prop = 1;
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
 initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.deg = [0 : 179];
-initg2.x_miller = 0;
-initg2.y_miller = 0;
-initg2.deg = 0;
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
 ```
 
 IR_ACV28.mat  
 
 ```matlab
 noise_level = [0.35, 0.4, 0.45, 0.5];
-n_fringe = 12;
-n_step = 18;
-g1_prop = 1;
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
 initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
 initg1.deg = [0 : 179];
-initg2.x_miller = 0;
-initg2.y_miller = 0;
-initg2.deg = 0;
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
+```
+
+IR_ACV29.mat  
+
+```matlab
+noise_level = [0];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
+initg1.x_miller = [0, 1];
+initg1.y_miller = [0, 1];
+initg1.deg = [0];
+initg2.x_miller = [0, 1];
+initg2.y_miller = [0, 1];
+initg2.deg = [0];
+```
+
+IR_ACV30.mat  
+
+```matlab
+noise_level = [0];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
+initg1.x_miller = [0, 1];
+initg1.y_miller = [0, 1];
+initg1.deg = [60, 90];
+initg2.x_miller = [0, 1];
+initg2.y_miller = [0, 1];
+initg2.deg = [60, 90];
 ```
