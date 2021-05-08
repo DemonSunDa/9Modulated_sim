@@ -27,7 +27,7 @@ clear all;
     mod2preMASSp1
     
     % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 2];
+    sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 4];
     % * ctr_d2  graintype of g1
     % * ctr_d2e graintype of g2
     % * ctr_d3  g1_prop
@@ -40,7 +40,7 @@ clear all;
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
-    sel.noise_level = [6,7];
+    sel.noise_level = [8,9,10,11];
     % * 0 noise when 1
     
     % storage
