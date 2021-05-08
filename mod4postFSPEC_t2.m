@@ -5,6 +5,7 @@
 %       the origin filtered frequency spectrum is kept
 %   if most of them contain more than one peak
 %       for g1 find one with largest amplitude
+%       for g2 second largest amplitude is looked for
 
 
 % init
@@ -31,7 +32,7 @@
         end
         [arrg2_max_famp, arrg2_max_ind] = max(peak_temp);
         for ctr_recol = 1 : vsc.n_step
-            abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_recol)), ctr_recol, 2) = arrg2_max_famp(ctr_recol);
+            abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_recol), ctr_recol), ctr_recol, 2) = arrg2_max_famp(ctr_recol);
         end
     end
 % end regen
