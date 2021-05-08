@@ -21,10 +21,10 @@ for ctr = 1 : size(ind, 1)
     idx_corr(ctr, 3) = I3;
     val_corr(ctr, 1) = DB.x_cut(I1);
     val_corr(ctr, 2) = DB.y_cut(I2);
-    val_corr(ctr, 3) = DB.deg(I3) + 180 / vsc.n_step;
-    if val_corr(ctr, 3) >= 180
-        val_corr(ctr, 3) = val_corr(ctr, 3) - 180;
-    end
+    val_corr(ctr, 3) = DB.deg(I3); % + 180 / vsc.n_step;
+%     if val_corr(ctr, 3) >= 180
+%         val_corr(ctr, 3) = val_corr(ctr, 3) - 180;
+%     end
     val_corr(ctr, 4) = ircorr_simdata(I1, I2, I3);
 end
 
