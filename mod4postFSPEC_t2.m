@@ -5,8 +5,6 @@
 %       the origin filtered frequency spectrum is kept
 %   if most of them contain more than one peak
 %       for g1 find one with largest amplitude
-%       for g2 second largest amplitude is looked for
-%       if not exits for ceretain angle, g1 freq with threshold amp is used
 
 
 % init
@@ -29,18 +27,11 @@
     if idc_mix == 2
         peak_temp = peak.famp;
         for ctr_remax = 1 : vsc.n_step
-            peak_temp(arrg1_max_ind(ctr_remax), ctr_remax) = 0; % clear g1
+            peak_temp(arrg1_max_ind(ctr_remax), ctr_remax) = 0;
         end
-
         [arrg2_max_famp, arrg2_max_ind] = max(peak_temp);
         for ctr_recol = 1 : vsc.n_step
-            if peak.ctr(ctr_recol) > 1 % if second max exists
-                abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_recol)), ctr_recol, 2)...
-                    = arrg2_max_famp(ctr_recol);
-            else
-                abfil_fpspec_regen(peak.idx(arrg1_max_ind(ctr_recol)), ctr_recol, 2)...
-                    = fampth;
-            end
+            abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_recol)), ctr_recol, 2) = arrg2_max_famp(ctr_recol);
         end
     end
 % end regen

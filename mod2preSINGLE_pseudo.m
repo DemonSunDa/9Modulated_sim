@@ -43,9 +43,9 @@
     initg1.deg = 0;
     fprintf('INPUT GRAIN2 ORIENTATION\n');
     % [initg2.x_miller, initg2.y_miller, initg2.deg] = gparams_IN();
-    initg2.x_miller = 0;
-    initg2.y_miller = 0;
-    initg2.deg = 0;
+    initg2.x_miller = 1;
+    initg2.y_miller = 1;
+    initg2.deg = 90;
 % end input initial state
 
 
