@@ -74,14 +74,15 @@
         for ctry_comp = 1 : max_ctry_comp
             for ctrgp_comp = 1 : max_ctrgp_comp
                 % tic;
-                ircorr_mat = xcorr2(abfil_fpspec_simdata,...
-                    irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp));
+                ircorr_mat = xcorr2(...
+                    irmodel(:, :, ctrx_comp, ctry_comp, ctrgp_comp),...
+                    abfil_fpspec_simdata);
                 % temporarily store the xcorr result for this iteration only
                 % toc;
                 
                 % store
                 ircorr_simdata(ctrx_comp, ctry_comp, deg_store + ctrgp_comp)...
-                    = fliplr(ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1));
+                    = (ircorr_mat(size(abfil_fpspec_simdata, 1), vsc.n_step : 2 * vsc.n_step - 1));
             end
         end
     end
