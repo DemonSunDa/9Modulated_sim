@@ -1,3 +1,12 @@
+% MODULUS 4et5preFILTER
+%   abrupt filter for frequency spectrum
+% DEPENDENCY
+%   
+% FILE OUTPUT
+%   
+
+
+
 % abrupt filter
     fth.offset_max = 0.3e3; % threshold offset for max v
     fth.offset_min = 0.3e3; % threshold offset for min v

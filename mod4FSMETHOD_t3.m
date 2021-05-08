@@ -30,7 +30,11 @@
 
         
 % peak detection
-    fampth = 0.02; % set threshold for amp of f spectrum
+    fampth = 0.02; % set base threshold for amp of f spectrum
+    if exist('fampth_adj', 'var') % if a fampth_adj is used
+        fampth = fampth + fampth_adj; % adjust fampth
+    end
+    
     for ctr_pdm = 1 : vsc.n_step % loop all angles
         for ctr_pds = 2 : (size(abfil_fpspec_simdata, 1) - 1) % loop all data point
             if (abfil_fpspec_simdata(ctr_pds - 1, ctr_pdm) < abfil_fpspec_simdata(ctr_pds, ctr_pdm))...
@@ -49,6 +53,6 @@
 
 
 % OUTPUT save
-    save('.\mat\4peak_simdata.mat', 'peak');
-    fprintf('FSMETHOD DONE\n');
+    % save('.\mat\4peak_simdata.mat', 'peak');
+    % fprintf('FSMETHOD DONE\n');
 % end output save
