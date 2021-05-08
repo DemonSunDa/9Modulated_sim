@@ -51,7 +51,7 @@ clear all;
         end
     end
 
-    mod4postFSPEC_t2
+    mod4postFSPEC_t1
 
     if idc_mix == 1
         abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
