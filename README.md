@@ -96,13 +96,23 @@ initg2.y_miller = [0];
 initg2.deg = [0];
 ```
 
+---
+
+ACV26-28  
+covers miller indices of 0, 0.25, 0.5, 0.75 and 1  
+with all deg  
+and all noise levels  
+with a fixed setup
+
+---
+
 IR_ACV29.mat  
 
 ```matlab
 noise_level = [0];
 n_fringe = [12];
 n_step = [18];
-g1_prop = [1];
+g1_prop = [0.6];
 initg1.x_miller = [0, 1];
 initg1.y_miller = [0, 1];
 initg1.deg = [0];
@@ -117,7 +127,7 @@ IR_ACV30.mat
 noise_level = [0];
 n_fringe = [12];
 n_step = [18];
-g1_prop = [1];
+g1_prop = [0.6];
 initg1.x_miller = [0, 1];
 initg1.y_miller = [0, 1];
 initg1.deg = [60, 90];
@@ -125,3 +135,23 @@ initg2.x_miller = [0, 1];
 initg2.y_miller = [0, 1];
 initg2.deg = [60, 90];
 ```
+
+IR_ACV31.mat  
+
+```matlab
+noise_level = [0];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [0, 30, 60, 90, 120, 150];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [0, 30, 60, 90, 120, 150];
+```
+
+---
+ACV29-31  
+are tests for FSMETHOD  
+where 31 is a set of proper results  
