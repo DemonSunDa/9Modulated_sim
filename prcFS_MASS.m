@@ -19,9 +19,9 @@ clear all;
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 1];
-        vec.y = [0, 1];
-        vec.deg = [60, 90];
+        vec.x = [0, 0.5, 1];
+        vec.y = [0, 0.5, 1];
+        vec.deg = [0, 30, 60, 90, 120, 150];
     % end define loop info
     
     mod2preMASSp1
@@ -41,7 +41,7 @@ clear all;
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
-    sel.noise_level = [1];
+    sel.noise_level = [3];
     % * 0 noise when 1
     
     % storage
