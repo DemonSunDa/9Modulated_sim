@@ -44,7 +44,11 @@ clear all;
     % * ctr_d2e graintype of g2
     
     % storage
-    stArr_simresult(1:sz_mat_graintype, 1:1, 1:1, 1:1, 1:1, 1:1) =struct(...
+    stArr_simresult(1:sz_simresult(1), 1:sz_simresult(2),...
+        1:sz_simresult(3), 1:sz_simresult(4),...
+        1:sz_simresult(5), 1:sz_simresult(6))...
+        = struct(...
+        'idc_mix', 0,...
         'initg1', struct(),...
         'initg2', struct(),...
         'val_corr', [],...
@@ -124,20 +128,16 @@ clear all;
 
         mod4postFSPEC_t2
 
-        if idc_mix == 1
-            abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
-            mod5IRMETHODp1et2_t4
-            mod5IRMETHODp3_t1
-        else
+        if idc_mix == 2
             abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 2);
             mod5IRMETHODp1et2_t4
             mod5IRMETHODp3_t1
             val_corr_g2 = val_corr;
-
-            abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
-            mod5IRMETHODp1et2_t4
-            mod5IRMETHODp3_t1
         end
+        
+        abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
+        mod5IRMETHODp1et2_t4
+        mod5IRMETHODp3_t1
 
         % store grain info and vsc and result into archived foramt
         stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = struct(...
