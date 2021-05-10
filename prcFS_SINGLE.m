@@ -6,19 +6,27 @@ clc;
 clear all;
 
 
-% main
+% init
+    idc_mix = 0;
+    % this is an indicator for the number of grains involved
+    % for prcFS, it is initiated with 0 and will be altered in mod4postFSPEC
+    % 1 for 1 grain type
+    % 2 for 2 grain types
+
     mod1CONSTANTS_r3
     mod2preSINGLE
+% end init
+
+
+% main
     fprintf('PROCESSING 1\n');
     mod2SIGNAL_r3
     mod3FSPEC_r4
     mod4et5preFILTER
     
     fampth_adj = 0;
-    ctr_mod4 = 0;
     done_mod4 = 0;
     while done_mod4 ~= 3
-        ctr_mod4 = ctr_mod4 + 1;
 
         mod4FSMETHOD_t3
 
@@ -27,7 +35,7 @@ clear all;
         ctr_twopeak = size(find(peak.ctr == 2), 2);
         ctr_mulpeak = size(find(peak.ctr > 2), 2);
 
-        if ctr_zeropeak
+        if ctr_zeropeak % threshold should allow at least one peak for each angle
             fampth_adj = -fampth * (ctr_zeropeak / vsc.n_step);
             done_mod4 = 0;
         elseif ~done_mod4
@@ -53,20 +61,16 @@ clear all;
 
     mod4postFSPEC_t1
 
-    if idc_mix == 1
-        abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
-        mod5IRMETHODp1et2_t4
-        mod5IRMETHODp3_t1
-    else
+    if idc_mix == 2
         abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 2);
         mod5IRMETHODp1et2_t4
         mod5IRMETHODp3_t1
         val_corr_g2 = val_corr;
-
-        abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
-        mod5IRMETHODp1et2_t4
-        mod5IRMETHODp3_t1
     end
+    
+    abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
+    mod5IRMETHODp1et2_t4
+    mod5IRMETHODp3_t1
 % end main
 
 
@@ -75,7 +79,7 @@ clear all;
     load('.\ACVSG\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
-    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc');
+    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc', 'idc_mix');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('IR_SIM DONE\n\n');

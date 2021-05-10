@@ -26,23 +26,25 @@ clear all;
     
     mod2preMASSp1
     
-    sel.g1_prop = [7];
-    % * 1 (mono grain) when 11
-    % * 0.6 when 7
-    sel.n_fringe = [11];
-    % * 12 fringes when 11
-    sel.n_step = [4];
-    % * 18 steps when 4
-    sel.noise_level = [3];
-    % * 0 noise when 1
-    
-    % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
-        size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
-        size(sel.n_step, 2), size(sel.noise_level, 2)];
-    % * ctr_d2  graintype of g1
-    % * ctr_d2e graintype of g2
-    
+    % system config selection
+        sel.g1_prop = [7];
+        % * 1 (mono grain) when 11
+        % * 0.6 when 7
+        sel.n_fringe = [11];
+        % * 12 fringes when 11
+        sel.n_step = [4];
+        % * 18 steps when 4
+        sel.noise_level = [3];
+        % * 0 noise when 1
+        
+        % define expecting size of the result    
+        sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
+            size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
+            size(sel.n_step, 2), size(sel.noise_level, 2)];
+        % * ctr_d2  graintype of g1
+        % * ctr_d2e graintype of g2
+    % end selection
+
     % storage
     stArr_simresult(1:sz_simresult(1), 1:sz_simresult(2),...
         1:sz_simresult(3), 1:sz_simresult(4),...
@@ -59,22 +61,19 @@ clear all;
 
 
 % main
-    % // waitbar init
-    % // waitbar is for indication only, comment out if necessary
-    % // f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
     for ctr_d5 = 1 : sz_simresult(6) % loop for noise_level
-    noise_level = vec.noise_level(sel.noise_level(ctr_d5));
+        noise_level = vec.noise_level(sel.noise_level(ctr_d5));
 
     for ctr_d4e = 1 : sz_simresult(5) % loop for n_step
-    n_step = vec.n_step(sel.n_step(ctr_d4e));
+        n_step = vec.n_step(sel.n_step(ctr_d4e));
             
     for ctr_d4 = 1 : sz_simresult(4) % loop for n_fringe
-    n_fringe = vec.n_fringe(sel.n_fringe(ctr_d4));
+        n_fringe = vec.n_fringe(sel.n_fringe(ctr_d4));
 
     for ctr_d3 = 1 : sz_simresult(3) % loop for g1_prop
-    g1_prop = vec.g1_prop(sel.g1_prop(ctr_d3));
-    % for mono grain g1_prop is constant 1 whose idx = 11
+        g1_prop = vec.g1_prop(sel.g1_prop(ctr_d3));
+        % for mono grain g1_prop is constant 1 whose idx = 11
                     
     for ctr_d2e = 1 : sz_simresult(2) % loop for graintype of g2
                         
@@ -82,18 +81,16 @@ clear all;
 
         % tic;
         mod2preMASSp2
-        fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n', ctr_d5, ctr_d4e, ctr_d4, ctr_d3, ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
-        % //  waitbar(ctr_d2 / sz_mat_graintype, f_waitbar,...
-        % //     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
+        fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n',...
+            ctr_d5, ctr_d4e, ctr_d4, ctr_d3,...
+            ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
         mod2SIGNAL_r3
         mod3FSPEC_r4
         mod4et5preFILTER
 
         fampth_adj = 0;
-        ctr_mod4 = 0;
         done_mod4 = 0;
         while done_mod4 ~= 3
-            ctr_mod4 = ctr_mod4 + 1;
 
             mod4FSMETHOD_t3
 
@@ -141,13 +138,14 @@ clear all;
 
         % store grain info and vsc and result into archived foramt
         stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = struct(...
+            'idc_mix', idc_mix,...
             'initg1', initg1,...
             'initg2', initg2,...
             'val_corr', val_corr,...
             'val_corr_g2', [],...
             'vsc', vsc...
         );
-        if exist('val_corr_g2', 'var')
+        if idc_mix == 2
             stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2...
                 = val_corr_g2;
         end

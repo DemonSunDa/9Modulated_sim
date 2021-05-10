@@ -1,6 +1,5 @@
-% MODULUS 2pre2MASS
+% MODULUS 2preMASSp2
 %   using pre generated info to produce one set of config
-%   by MANUAL INPUT
 % DEPENDENCY
 %   1CONSTANTS.mat
 %   2pre_mat.mat

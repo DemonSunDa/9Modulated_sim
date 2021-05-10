@@ -8,6 +8,11 @@ clear all;
 
 
 % init
+    idc_mix = 1;
+    % this is an indicator for the number of grains involved
+    % for prcIR, since there is no way to identify if there are two grins or not
+    % the inicator is set to 1 which means 1 grain type
+
     mod1CONSTANTS_r3
     
     % define loop info
@@ -48,75 +53,68 @@ clear all;
         1:sz_simresult(3), 1:sz_simresult(4),...
         1:sz_simresult(5), 1:sz_simresult(6))...
         = struct(...
-        'idc_mix', 0,...
+        'idc_mix', 1,...
         'initg1', struct(),...
         'initg2', struct(),...
         'val_corr', [],...
-        'val_corr_g2', [],...
         'vsc', struct()...
     );
 % end init
 
 
 % main
-    % // waitbar init
-    % // waitbar is for indication only, comment out if necessary
-    % // f_waitbar = waitbar(0, '10', 'Name', 'IR_SIM');
     tic;
     for ctr_d5 = 1 : sz_simresult(6) % loop for noise_level
         noise_level = vec.noise_level(sel.noise_level(ctr_d5));
 
-        for ctr_d4e = 1 : sz_simresult(5) % loop for n_step
-            n_step = vec.n_step(sel.n_step(ctr_d4e));
-            
-            for ctr_d4 = 1 : sz_simresult(4) % loop for n_fringe
-                n_fringe = vec.n_fringe(sel.n_fringe(ctr_d4));
+    for ctr_d4e = 1 : sz_simresult(5) % loop for n_step
+        n_step = vec.n_step(sel.n_step(ctr_d4e));
+    
+    for ctr_d4 = 1 : sz_simresult(4) % loop for n_fringe
+        n_fringe = vec.n_fringe(sel.n_fringe(ctr_d4));
 
-                for ctr_d3 = 1 : sz_simresult(3) % loop for g1_prop
-                    g1_prop = vec.g1_prop(sel.g1_prop(ctr_d3));
-                    % for mono grain g1_prop is constant 1 whose idx = 11
-                    
-                    for ctr_d2e = 1 : sz_simresult(2) % loop for graintype of g2
-                        
-                        for ctr_d2 = 1 : sz_simresult(1) % loop for graintype of g1
+    for ctr_d3 = 1 : sz_simresult(3) % loop for g1_prop
+        g1_prop = vec.g1_prop(sel.g1_prop(ctr_d3));
+        % for mono grain g1_prop is constant 1 whose idx = 11
+    
+    for ctr_d2e = 1 : sz_simresult(2) % loop for graintype of g2
+    
+    for ctr_d2 = 1 : sz_simresult(1) % loop for graintype of g1
+        % tic;
+        mod2preMASSp2
+        fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n',...
+            ctr_d5, ctr_d4e, ctr_d4, ctr_d3,...
+            ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
+        mod2SIGNAL_r3
+        mod3FSPEC_r4
+        mod4et5preFILTER
+        mod5IRMETHODp1et2_t4
+        mod5IRMETHODp3_t1
 
-                            % tic;
-                            mod2preMASSp2
-                            fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n', ctr_d5, ctr_d4e, ctr_d4, ctr_d3, ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
-                            % //  waitbar(ctr_d2 / sz_mat_graintype, f_waitbar,...
-                            % //     sprintf('PROCESSING %d\n%d / %d', ctr_d5, ctr_d2, sz_mat_graintype))
-                            mod2SIGNAL_r3
-                            mod3FSPEC_r4
-                            mod4et5preFILTER
-                            mod5IRMETHODp1et2_t4
-                            mod5IRMETHODp3_t1
-
-                            % store grain info and vsc and result into archived foramt
-                            stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = struct(...
-                                'initg1', initg1,...
-                                'initg2', initg2,...
-                                'val_corr', val_corr,...
-                                'vsc', vsc...
-                            );
-                            % toc;
-                        end
-                    end
-                end
-            end
-        end
-    end
+        % store grain info and vsc and result into archived foramt
+        stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5)...
+            = struct(...
+            'idc_mix', 1,...
+            'initg1', initg1,...
+            'initg2', initg2,...
+            'val_corr', val_corr,...
+            'vsc', vsc...
+        );
+        % toc;
+    end % ctr_d2
+    end % ctr_d2e
+    end % ctr_d3
+    end % ctr_d4
+    end % ctr_d4e
+    end % ctr_d5
     toc;
     
 % end main
 
 
 % OUTPUT save
-    % // save('.\mat\6stArr_simresult', 'stArr_simresult');
     fprintf('ARCHIVING\n');
-    % // clear variables;
     load('.\ACVMS\acvmgr.mat');
-    % // load('.\mat\1CONSTANTS.mat', 'SC');
-    % // load('.\mat\6stArr_simresult');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\IR_ACV%d.mat', ctr_acv);
     save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult', 'reval');
