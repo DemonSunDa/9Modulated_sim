@@ -30,9 +30,9 @@
 
         
 % peak detection
-    fampth = 0.02; % set base threshold for amp of f spectrum
-    if exist('fampth_adj', 'var') % if a fampth_adj is used
-        fampth = fampth + fampth_adj; % adjust fampth
+    fampth_static = 0.02;
+    if ~exist('fampth', 'var') % if a fampth is not defined
+        fampth = fampth_static; % set threshold for amp of f spectrum
     end
     
     for ctr_pdm = 1 : vsc.n_step % loop all angles
