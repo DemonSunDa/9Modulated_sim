@@ -4,7 +4,7 @@
 % DEPENDENCY
 %   ACVSG
 % FILE OUTPUT
-%   ACVSG\IR_ACV[num].mat
+%   ACVSG\IR_REVAL[num].mat
 
 
 clc;
@@ -12,20 +12,9 @@ clear variables;
 load('.\ACVSG\IR_ACV19.mat');
 
 
-% plane_a = [1, 1, 1];
-% plane_b = [1, 1, 1];
-% plane_a_deg = 0;
-% plane_b_deg = 90;
-% [R, phi, tau] = get_R_value(plane_a, plane_b, plane_a_deg, plane_b_deg);
-
-
 % init
-    plane_sim1 = [initg1.x_miller, initg1.y_miller, 1];
-    plane_sim1_deg = initg1.deg;
-    plane_sim2 = [initg2.x_miller, initg2.y_miller, 1];
-    plane_sim2_deg = initg2.deg;
     % storage
-    if ~exist('val_corr_g2', 'var')
+    if idc_mix == 1
         reval = struct(...
             'R11', [],...
             'R21', [],...
@@ -43,9 +32,20 @@ load('.\ACVSG\IR_ACV19.mat');
 
 
 % process
+    % plane_a = [1, 1, 1];
+    % plane_b = [1, 1, 1];
+    % plane_a_deg = 0;
+    % plane_b_deg = 90;
+    % [R, phi, tau] = get_R_value(plane_a, plane_b, plane_a_deg, plane_b_deg);
+    
     % two conditions:
     % without FSMETHOD =>> 1 ir result
-    % with FSMethod =>> 2 ir result
+    % with FSMETHOD =>> 1 / 2 ir results
+    plane_sim1 = [initg1.x_miller, initg1.y_miller, 1];
+    plane_sim1_deg = initg1.deg;
+    plane_sim2 = [initg2.x_miller, initg2.y_miller, 1];
+    plane_sim2_deg = initg2.deg;
+
     for ctr_res = 1 : size(val_corr, 1)
         plane_res1 = [val_corr(ctr_res, 1), val_corr(ctr_res, 2), 1];
         plane_res1_deg = val_corr(ctr_res, 3);
@@ -61,7 +61,7 @@ load('.\ACVSG\IR_ACV19.mat');
         reval.corr1(ctr_res) = val_corr(ctr_res, 4);
     end
     
-    if exist('val_corr_g2', 'var')
+    if idx_mix == 2
         for ctr_res = 1 : size(val_corr_g2, 1)
             plane_res2 = [val_corr_g2(ctr_res, 1), val_corr_g2(ctr_res, 2), 1];
             plane_res2_deg = val_corr_g2(ctr_res, 3);

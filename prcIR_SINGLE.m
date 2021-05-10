@@ -6,9 +6,18 @@ clc;
 clear all;
 
 
-% main
+% init
+    idc_mix = 1;
+    % this is an indicator for the number of grains involved
+    % for prcIR, since there is no way to identify if there are two grins or not
+    % the inicator is set to 1 which means 1 grain type
+
     mod1CONSTANTS_r3
     mod2preSINGLE
+% end init
+
+
+% main
     fprintf('PROCESSING 1\n');
     mod2SIGNAL_r3
     mod3FSPEC_r4
@@ -23,7 +32,7 @@ clear all;
     load('.\ACVSG\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
-    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'vsc');
+    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'vsc', 'idc_mix');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('IR_SIM DONE\n\n');

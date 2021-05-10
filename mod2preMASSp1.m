@@ -1,6 +1,5 @@
-% MODULUS 2pre2MASS
+% MODULUS 2preMASSp1
 %   generate multiple set of grain info
-%   by MANUAL INPUT
 % DEPENDENCY
 %   1CONSTANTS.mat
 % FILE OUTPUT
