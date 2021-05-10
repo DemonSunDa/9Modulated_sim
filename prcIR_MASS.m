@@ -2,7 +2,7 @@
 %   this script contains the full process of multiple runs
 %   with no prompted input
 
-
+profile on;
 clc;
 clear all;
 
@@ -18,30 +18,30 @@ clear all;
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
-        vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 0.25, 0.5, 0.75, 1];
-        vec.y = [0, 0.25, 0.5, 0.75, 1];
-        % vec.deg = [155];
+        % vec.deg = linspace(0, 179, 180) - 0;
+        vec.x = [0, 0.5, 1];
+        vec.y = [0, 0.5, 1];
+        vec.deg = [0, 30, 60, 90, 120, 150];
     % end define loop info
     
     mod2preMASSp1
     
-    % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, 1, 1, 1, 1, 4];
-    % * ctr_d2  graintype of g1
-    % * ctr_d2e graintype of g2
-    % * ctr_d3  g1_prop
-    % * ctr_d4  n_fringe
-    % * ctr_d4e n_step
-    % * ctr_d5  noise_level
-    sel.g1_prop = [11];
+    sel.g1_prop = [6];
     % * 1 (mono grain) when 11
+    % * 0.6 when 7
     sel.n_fringe = [11];
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
-    sel.noise_level = [8,9,10,11];
+    sel.noise_level = [1,2,3,4,5];
     % * 0 noise when 1
+    
+    % define expecting size of the result    
+    sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
+        size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
+        size(sel.n_step, 2), size(sel.noise_level, 2)];
+    % * ctr_d2  graintype of g1
+    % * ctr_d2e graintype of g2
     
     % storage
     stArr_simresult(1:sz_mat_graintype, 1:1, 1:1, 1:1, 1:1, 1:1) =struct(...
@@ -102,7 +102,6 @@ clear all;
     end
     toc;
     
-    mod6REVAL_MASS
 % end main
 
 
@@ -120,3 +119,5 @@ clear all;
     % clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save
+
+profile viewer;

@@ -26,14 +26,6 @@ clear all;
     
     mod2preMASSp1
     
-    % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, sz_mat_graintype, 1, 1, 1, 1];
-    % * ctr_d2  graintype of g1
-    % * ctr_d2e graintype of g2
-    % * ctr_d3  g1_prop
-    % * ctr_d4  n_fringe
-    % * ctr_d4e n_step
-    % * ctr_d5  noise_level
     sel.g1_prop = [7];
     % * 1 (mono grain) when 11
     % * 0.6 when 7
@@ -43,6 +35,13 @@ clear all;
     % * 18 steps when 4
     sel.noise_level = [3];
     % * 0 noise when 1
+    
+    % define expecting size of the result    
+    sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
+        size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
+        size(sel.n_step, 2), size(sel.noise_level, 2)];
+    % * ctr_d2  graintype of g1
+    % * ctr_d2e graintype of g2
     
     % storage
     stArr_simresult(1:sz_mat_graintype, 1:1, 1:1, 1:1, 1:1, 1:1) =struct(...
@@ -160,8 +159,6 @@ clear all;
     end % ctr_d4e
     end % ctr_d5
     toc;
-    
-    mod6REVAL_MASS
 % end main
 
 
