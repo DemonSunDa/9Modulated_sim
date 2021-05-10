@@ -31,7 +31,7 @@ clear all;
     fprintf('ARCHIVING\n');
     load('.\ACVSG\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVSG\\ACV%d_IR.mat', ctr_acv);
     save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'vsc', 'idc_mix');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
