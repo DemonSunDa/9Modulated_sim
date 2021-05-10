@@ -58,7 +58,7 @@ is a test for IRMETHOD
 
 ---
 
-IR_ACV26.mat  
+ACV26_IR.mat  
 
 ```matlab
 noise_level = [0, 0.05, 0.1, 0.15, 0.2];
@@ -73,7 +73,7 @@ initg2.y_miller = [0];
 initg2.deg = [0];
 ```
 
-IR_ACV27.mat  
+ACV27_IR.mat  
 
 ```matlab
 noise_level = [0.25, 0.3];
@@ -88,7 +88,7 @@ initg2.y_miller = [0];
 initg2.deg = [0];
 ```
 
-IR_ACV28.mat  
+ACV28_IR.mat  
 
 ```matlab
 noise_level = [0.35, 0.4, 0.45, 0.5];
@@ -113,7 +113,7 @@ with a fixed setup
 
 ---
 
-IR_ACV29.mat  
+ACV29_FS.mat  
 
 ```matlab
 noise_level = [0];
@@ -128,7 +128,7 @@ initg2.y_miller = [0, 1];
 initg2.deg = [0];
 ```
 
-IR_ACV30.mat  
+ACV30_FS.mat  
 
 ```matlab
 noise_level = [0];
@@ -143,7 +143,7 @@ initg2.y_miller = [0, 1];
 initg2.deg = [60, 90];
 ```
 
-IR_ACV31.mat  
+ACV31_FS.mat  
 
 ```matlab
 noise_level = [0];
