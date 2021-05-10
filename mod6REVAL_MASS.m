@@ -7,23 +7,13 @@
 %   ACVMS\IR_REVAL[num].mat
 
 
-profile on;
 clc;
 clear variables;
 
-load('.\ACVMS\IR_ACV25.mat');
+load('.\ACVMS\ACV29_FS.mat');
 
 % init
     % storage
-    if idc_mix == 1
-        reval(1 : sz_simresult(1), 1 : sz_simresult(2),...
-            1 : sz_simresult(3), 1 : sz_simresult(4),...
-            1 : sz_simresult(5), 1 : sz_simresult(6))...
-            = struct(...
-            'R11', [],...
-            'R21', [],...
-            'corr1', []);
-    else
         reval(1 : sz_simresult(1), 1 : sz_simresult(2),...
             1 : sz_simresult(3), 1 : sz_simresult(4),...
             1 : sz_simresult(5), 1 : sz_simresult(6))...
@@ -33,8 +23,8 @@ load('.\ACVMS\IR_ACV25.mat');
             'corr1', [],...
             'R12', [],...
             'R22', [],...
-            'corr2', []);
-    end
+            'corr2', [],...
+            'idc_mix', 0);
 % end init
 
 
@@ -48,6 +38,9 @@ load('.\ACVMS\IR_ACV25.mat');
     for ctr_d3 = 1 : sz_simresult(3)
     for ctr_d2e = 1 : sz_simresult(2)
     for ctr_d2 = 1 : sz_simresult(1)
+        reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).idc_mix...
+            = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).idc_mix;
+        
         plane_sim1 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg1.x_miller,...
             stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg1.y_miller, 1];
         plane_sim1_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).initg1.deg;
@@ -72,7 +65,7 @@ load('.\ACVMS\IR_ACV25.mat');
                 = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 4);
         end
 
-        if idx_mix == 2
+        if stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).idc_mix == 2
             for ctr_res = 1 : size(stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2, 1)
                 plane_res2 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 1),...
                     stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 2), 1];
@@ -102,10 +95,8 @@ load('.\ACVMS\IR_ACV25.mat');
 
 % OUTPUT save
     fprintf('ARCHIVING\n');
-    str_acv = sprintf('.\\ACVMS\\REVAL%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', ctr_acv);
     save(str_acv, 'reval');
     % clear all;
     fprintf('IR_REVAL DONE\n\n');
 % end output save
-
-profile viewer;
