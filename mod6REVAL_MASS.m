@@ -102,9 +102,9 @@ load('.\ACVMS\IR_ACV25.mat');
 
 % OUTPUT save
     fprintf('ARCHIVING\n');
-    str_acv = sprintf('.\\ACVMS\\IR_REVAL%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVMS\\REVAL%d.mat', ctr_acv);
     save(str_acv, 'reval');
-    clear all;
+    % clear all;
     fprintf('IR_REVAL DONE\n\n');
 % end output save
 

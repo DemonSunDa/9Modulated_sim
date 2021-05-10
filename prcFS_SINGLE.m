@@ -82,5 +82,5 @@ clear all;
     save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc', 'idc_mix');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
-    fprintf('IR_SIM DONE\n\n');
+    fprintf('FS_SIM DONE\n\n');
 % end output save
