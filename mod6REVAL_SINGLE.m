@@ -4,7 +4,7 @@
 % DEPENDENCY
 %   ACVSG
 % FILE OUTPUT
-%   ACVSG\IR_REVAL[num].mat
+%   ACVSG\IR_ACV[num].mat
 
 
 clc;
