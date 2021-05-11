@@ -108,6 +108,7 @@ initg2.deg = [0];
 
 ### ACV26-28  
 
+loop for g1  
 covers miller indices of 0, 0.25, 0.5, 0.75 and 1  
 with all deg  
 and all noise levels  
