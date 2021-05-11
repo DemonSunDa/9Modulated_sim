@@ -24,9 +24,9 @@ clear all;
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 0.5, 1];
-        vec.y = [0, 0.5, 1];
-        vec.deg = [0, 30, 60, 90, 120, 150];
+        vec.x = [0, 0.25, 0.5, 0.75, 1];
+        vec.y = [0, 0.25, 0.5, 0.75, 1];
+        vec.deg = [0, 90];
     % end define loop info
     
     mod2preMASSp1
@@ -38,7 +38,7 @@ clear all;
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
-    sel.noise_level = [1,2,3,4,5];
+    sel.noise_level = [1];
     % * 0 noise when 1
     
     % define expecting size of the result    
@@ -115,7 +115,7 @@ clear all;
     load('.\ACVMS\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVMS\\ACV%d_IR.mat', ctr_acv);
-    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult', 'reval');
+    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('IR_SIM DONE\n\n');
