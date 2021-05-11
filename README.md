@@ -225,3 +225,18 @@ for ACV33_FS, mod4postFSPEC_t2
 for ACV34_FS, mod4postFSPEC_t3  
 
 ---
+
+ACV35_IR.mat
+
+```matlab
+noise_level = [0];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [1];
+initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.deg = [0, 90];
+initg2.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.deg = [0, 90];
+```
