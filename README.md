@@ -53,7 +53,8 @@ initg2.deg = [0];
 
 ---
 
-ACV25  
+### ACV25  
+
 is a test for IRMETHOD  
 
 ---
@@ -105,7 +106,8 @@ initg2.deg = [0];
 
 ---
 
-ACV26-28  
+### ACV26-28  
+
 covers miller indices of 0, 0.25, 0.5, 0.75 and 1  
 with all deg  
 and all noise levels  
@@ -160,8 +162,65 @@ initg2.deg = [0, 30, 60, 90, 120, 150];
 
 ---
 
-ACV29-31  
+### ACV29-31  
+
 are tests for FSMETHOD  
 where 31 is a set of proper results  
+
+---
+
+ACV32_FS.mat
+
+```matlab
+noise_level = [0, 0.1, 0.2];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [0];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [0];
+```
+
+ACV33_FS.mat
+
+```matlab
+noise_level = [0, 0.1, 0.2];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [0];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [0];
+```
+
+ACV34_FS.mat
+
+```matlab
+noise_level = [0, 0.1, 0.2];
+n_fringe = [12];
+n_step = [18];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [0];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [0];
+```
+
+---
+
+### ACV32-34
+
+are testing new thresholding methods with FSMETHOD  
+for ACV32_FS, mod4postFSPEC_t1
+for ACV33_FS, mod4postFSPEC_t2  
+for ACV34_FS, mod4postFSPEC_t3  
 
 ---
