@@ -21,7 +21,7 @@ clear all;
         % vec.deg = linspace(0, 179, 180) - 0;
         vec.x = [0, 0.5, 1];
         vec.y = [0, 0.5, 1];
-        vec.deg = [0, 30, 60, 90, 120, 150];
+        vec.deg = [0];
     % end define loop info
     
     mod2preMASSp1
@@ -34,7 +34,7 @@ clear all;
         % * 12 fringes when 11
         sel.n_step = [4];
         % * 18 steps when 4
-        sel.noise_level = [3];
+        sel.noise_level = [1, 3, 5];
         % * 0 noise when 1
         
         % define expecting size of the result    
@@ -117,8 +117,8 @@ clear all;
             end
         end
         
-        % mod4postFSPEC_t1
-        mod4postFSPEC_t2
+        mod4postFSPEC_t1
+        % mod4postFSPEC_t2
         % mod4postFSPEC_t3
 
         if idc_mix == 2
@@ -159,7 +159,7 @@ clear all;
     fprintf('ARCHIVING\n');
     load('.\ACVMS\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACVMS\\ACV_FS%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVMS\\ACV%d_FS.mat', ctr_acv);
     save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
     % clear all;
