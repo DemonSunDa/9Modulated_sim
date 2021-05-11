@@ -10,10 +10,10 @@
 
 
 % init
-    if ctr_onepeak <= (vsc.n_step * fampth * 20)
-        idc_mix = 2; % indicate a mixture of grain type
+    if ctr_onepeak >= (vsc.n_step * fampth * 20)
+        idc_mix = 1; % indicate a mixture of grain type
     else
-        idc_mix = 1; % indicate one grain type
+        idc_mix = 2; % indicate one grain type
     end
 
     % storage

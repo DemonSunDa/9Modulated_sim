@@ -23,44 +23,41 @@ clear all;
     mod2SIGNAL_r3
     mod3FSPEC_r4
     mod4et5preFILTER
-    
-    fampth_adj = 0;
-    done_mod4 = 0;
-    while done_mod4 ~= 3
 
+    fampth = 0;
+    done_mod4 = 0;
+    while ~done_mod4
         mod4FSMETHOD_t3
 
+        max_famp = max(peak.famp, [], 'all');
         ctr_zeropeak = size(find(peak.ctr == 0), 2);
         ctr_onepeak = size(find(peak.ctr == 1), 2);
         ctr_twopeak = size(find(peak.ctr == 2), 2);
         ctr_mulpeak = size(find(peak.ctr > 2), 2);
-
-        if ctr_zeropeak % threshold should allow at least one peak for each angle
-            fampth_adj = -fampth * (ctr_zeropeak / vsc.n_step);
-            done_mod4 = 0;
-        elseif ~done_mod4
+        sum_mulpeak = sum(peak.ctr(find(peak.ctr > 2)));
+        
+        if sum_mulpeak >= (2 * vsc.n_step) % half angles with 4 peaks detected
+            famp_sorted = sort(peak.famp(:), 'descend');
+            famp_g1 = famp_sorted(1 : vsc.n_step);
+            famp_g2 = famp_sorted((vsc.n_step + 1) : (2 * vsc.n_step));
+            famp_g3 = famp_sorted((2 * vsc.n_step + 1) : sum(peak.ctr));
+            avg_famp_g1 = mean(famp_g1);
+            std_famp_g1 = std(famp_g1);
+            avg_famp_g2 = mean(famp_g2);
+            std_famp_g2 = std(famp_g2);
+            avg_famp_g3 = mean(famp_g3);
+            std_famp_g3 = std(famp_g3);
+            
+            fampth = avg_famp_g3 + std_famp_g3;
+        else
             done_mod4 = 1;
         end
-
-        if done_mod4 == 1
-        noise_famp = peak.famp;
-            for ctr_noiseth = 1 : (3 * vsc.n_step)
-                max_famp = max(noise_famp, [], 'all');
-                [max_famp_row, max_famp_col] = find(noise_famp == max_famp, 1);
-                noise_famp(max_famp_row, max_famp_col) = 0;
-                if ctr_noiseth == 1
-                    min_fampth = max_famp / 20;
-                end
-            end
-            fampth_adj = max(noise_famp, [], 'all') - fampth + min_fampth;
-            done_mod4 = 2;
-        elseif done_mod4 == 2
-            done_mod4 = 3;
-        end
     end
-
+    
     mod4postFSPEC_t1
-
+    % mod4postFSPEC_t2
+    % mod4postFSPEC_t3
+    
     if idc_mix == 2
         abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 2);
         mod5IRMETHODp1et2_t4
@@ -78,7 +75,7 @@ clear all;
     fprintf('ARCHIVING\n');
     load('.\ACVSG\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACVSG\\IR_ACV%d.mat', ctr_acv);
+    str_acv = sprintf('.\\ACVSG\\ACV%d_FS.mat', ctr_acv);
     save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc', 'idc_mix');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
