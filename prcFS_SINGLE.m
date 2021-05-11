@@ -14,7 +14,7 @@ clear all;
     % 2 for 2 grain types
 
     mod1CONSTANTS_r3
-    mod2preSINGLE_pseudo
+    mod2preSINGLE
 % end init
 
 
@@ -54,8 +54,8 @@ clear all;
         end
     end
     
-    % mod4postFSPEC_t1
-    mod4postFSPEC_t2
+    mod4postFSPEC_t1
+    % mod4postFSPEC_t2
     % mod4postFSPEC_t3
     
     if idc_mix == 2
