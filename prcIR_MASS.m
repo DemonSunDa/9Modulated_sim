@@ -17,9 +17,9 @@ clear all;
     
     % define loop info
         vec.g1_prop = (0 : 0.1 : 1);
-        vec.n_fringe = (2 : 1 : 12);
-        vec.n_step = [9, 12, 15, 18, 30, 36];
-        vec.noise_level = (0 : 0.05 : 0.5);
+        vec.n_fringe = [4, 8, 12, 16];
+        vec.n_step = [9, 12, 15, 18, 30, 36, 90, 180];
+        vec.noise_level = (0 : 0.05 : 1);
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
@@ -34,7 +34,7 @@ clear all;
     sel.g1_prop = [6];
     % * 1 (mono grain) when 11
     % * 0.6 when 7
-    sel.n_fringe = [11];
+    sel.n_fringe = [3];
     % * 12 fringes when 11
     sel.n_step = [4];
     % * 18 steps when 4
