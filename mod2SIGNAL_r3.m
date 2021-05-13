@@ -28,6 +28,7 @@
         % row 5 for g2 v
         % row 6 for g2 f
     signal_simdata = zeros(length(time_sig), vsc.n_step); % init storage for simulated signal
+    snr_simdata = zeros(1, vsc.n_step);
 % end init
 
 
@@ -67,7 +68,9 @@
         simg1temp.amp = fullamp * initg1.prop;
         simg2temp.amp = fullamp * initg2.prop;
 
-        whitenoise = (fullamp * vsc.noise_level) * rand(size(time_sig)); % set the white noise strength
+        whitenoise = (fullamp * vsc.noise_level) * randn(size(time_sig)); % set the white noise strength
+        % * white gaussian noise is used randn
+        % * fullamp * vsc.noise is std of this white noise
         
         simg1temp.t_2d = initg1.d_2d / simg1temp.v_cal; % time from centre of g1 to detection beam
         simg2temp.t_2d = initg2.d_2d / simg2temp.v_cal; % time from centre of g2 to detection beam
@@ -91,9 +94,11 @@
             (simg2temp.amp * sin(2 * pi * simg2temp.f_cal * time_sig));
         
         SAW_simtemp = simg1temp.signal + simg2temp.signal + whitenoise;
+        snr_temp = snr(simg1temp.signal + simg2temp.signal, whitenoise);
         
         % store
         signal_simdata(:, ctr_siggen) = SAW_simtemp;
+        snr_simdata(1, ctr_siggen) = snr_temp;
     % end signal gen
     end
 % end loop for 180 degrees

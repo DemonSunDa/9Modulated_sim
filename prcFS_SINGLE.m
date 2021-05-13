@@ -76,7 +76,7 @@ clear all;
     load('.\ACVSG\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
     str_acv = sprintf('.\\ACVSG\\ACV%d_FS.mat', ctr_acv);
-    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc', 'idc_mix');
+    save(str_acv, 'ctr_acv', 'SC', 'initg1', 'initg2', 'val_corr', 'val_corr_g2', 'vsc', 'idc_mix', 'snr_simdata');
     save('.\ACVSG\acvmgr.mat', 'ctr_acv');
     % clear all;
     fprintf('FS_SIM DONE\n\n');
