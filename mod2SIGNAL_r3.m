@@ -63,7 +63,7 @@
 
     % signal gen
         % define that g1 is the grain closer to the detection beam
-        fullamp = 1; %set the full amplitude
+        fullamp = 1; % set the full amplitude
         simg1temp.amp = fullamp * initg1.prop;
         simg2temp.amp = fullamp * initg2.prop;
 
