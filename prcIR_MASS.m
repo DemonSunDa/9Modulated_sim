@@ -2,6 +2,7 @@
 %   this script contains the full process of multiple runs
 %   with no prompted input
 
+
 profile on;
 clc;
 clear all;
@@ -18,35 +19,46 @@ clear all;
     % define loop info
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
-        vec.n_step = [9, 12, 15, 18, 30, 36, 90, 180];
+        vec.n_step = [9, 12, 15, 18, 36, 90, 180];
         vec.noise_level = (0 : 0.05 : 1);
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 0.25, 0.5, 0.75, 1];
-        vec.y = [0, 0.25, 0.5, 0.75, 1];
-        vec.deg = [0, 90];
+        vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+        vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+        vec.deg = 0 : 10 : 170;
     % end define loop info
     
     mod2preMASSp1
     
-    sel.g1_prop = [6];
-    % * 1 (mono grain) when 11
-    % * 0.6 when 7
-    sel.n_fringe = [3];
-    % * 12 fringes when 11
-    sel.n_step = [4];
-    % * 18 steps when 4
-    sel.noise_level = [1];
-    % * 0 noise when 1
-    
-    % define expecting size of the result    
-    sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
-        size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
-        size(sel.n_step, 2), size(sel.noise_level, 2)];
-    % * ctr_d2  graintype of g1
-    % * ctr_d2e graintype of g2
+    % system config selection
+        sel.g1_prop = [11];
+        % * 1 (mono grain) when 11
+        % ! IMPORTANT DO NOT MIX ITERATIONS WITH ONE GRAIN TO TWO GRAINS
+        % * 0.6 when 7
+        sel.n_fringe = [3];
+        % * 12 fringes when 11
+        sel.n_step = [5];
+        % * 18 steps when 4
+        % * 36 steps when 5
+        sel.noise_level = 1 : 11;
+        % * 0 noise when 1
+
+        % define expecting size of the result
+        if sel.g1_prop == 11
+        % * if the g1_prop is 1 where g2 does not involve, iterations for g2 is depressed
+            sz_simresult = [sz_mat_graintype, 1,...
+                size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
+                size(sel.n_step, 2), size(sel.noise_level, 2)];
+            % * ctr_d2  graintype of g1
+            % * ctr_d2e graintype of g2
+        else
+            sz_simresult = [sz_mat_graintype, sz_mat_graintype,...
+                size(sel.g1_prop, 2), size(sel.n_fringe, 2),...
+                size(sel.n_step, 2), size(sel.noise_level, 2)];
+        end
+    % end selection
     
     % storage
     stArr_simresult(1:sz_simresult(1), 1:sz_simresult(2),...
@@ -83,7 +95,7 @@ clear all;
         mod2preMASSp2
         fprintf('PROCESSING\t%d_%d_%d_%d,\t%d\t/ %d\t\t%d\t/ %d\n',...
             ctr_d5, ctr_d4e, ctr_d4, ctr_d3,...
-            ctr_d2e, sz_mat_graintype, ctr_d2, sz_mat_graintype);
+            ctr_d2e, sz_simresult(2), ctr_d2, sz_simresult(1));
         mod2SIGNAL_r3
         mod3FSPEC_r4
         mod4et5preFILTER
