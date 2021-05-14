@@ -42,7 +42,7 @@ clear all;
         sel.n_step = [5];
         % * 18 steps when 4
         % * 36 steps when 5
-        sel.noise_level = 1 : 4;
+        sel.noise_level = 5 : 7;
         % * 0 noise when 1
         % * 0.15 noise when 4
 
