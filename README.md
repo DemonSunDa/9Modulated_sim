@@ -244,3 +244,17 @@ initg2.x_miller = [0, 0.25, 0.5, 0.75, 1];
 initg2.y_miller = [0, 0.25, 0.5, 0.75, 1];
 initg2.deg = [0, 90];
 ```
+
+ACV36_IR.mat
+
+```matlab
+noise_level = [0, 0.05, 0.1, 0.15];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [1];
+initg1.x_miller = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+initg1.y_miller = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+initg1.deg = [0 : 15 : 165];
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
