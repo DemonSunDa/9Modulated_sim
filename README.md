@@ -272,4 +272,3 @@ initg1.deg = [0 : 15 : 165];
 initg2.x_miller = [0];
 initg2.y_miller = [0];
 initg2.deg = [0];
-
