@@ -27,7 +27,7 @@ clear all;
         % vec.deg = linspace(0, 179, 180) - 0;
         vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
         vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-        vec.deg = 0 : 10 : 170;
+        vec.deg = 0 : 15 : 165;
     % end define loop info
     
     mod2preMASSp1
@@ -42,8 +42,9 @@ clear all;
         sel.n_step = [5];
         % * 18 steps when 4
         % * 36 steps when 5
-        sel.noise_level = 1 : 11;
+        sel.noise_level = 1 : 4;
         % * 0 noise when 1
+        % * 0.15 noise when 4
 
         % define expecting size of the result
         if sel.g1_prop == 11
