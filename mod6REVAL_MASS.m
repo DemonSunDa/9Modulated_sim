@@ -1,5 +1,5 @@
 % MODULUS 6REVAL_MASS
-%   using function get_R_value to evaluate the difference between
+%   using function func_getRvalue to evaluate the difference between
 %   simulation input and result
 % DEPENDENCY
 %   ACVMS
@@ -54,9 +54,9 @@ load('.\ACVMS\ACV34_FS.mat');
             plane_res1_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 3);
 
             [evalR11, ~, ~] =...
-                get_R_value(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
+                func_getRvalue(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
             [evalR21, ~, ~] =...
-                get_R_value(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
+                func_getRvalue(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
 
             % store
             reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).R11(ctr_res) = evalR11;
@@ -72,9 +72,9 @@ load('.\ACVMS\ACV34_FS.mat');
                 plane_res2_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 3);
     
                 [evalR12, ~, ~] =...
-                    get_R_value(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
+                    func_getRvalue(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
                 [evalR22, ~, ~] =...
-                    get_R_value(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
+                    func_getRvalue(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
     
                 % store
                 reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).R12(ctr_res) = evalR12;
