@@ -37,12 +37,12 @@
     
     fprintf('INPUT GRAIN1 ORIENTATION\n');
     fprintf('(the grain closer to detection beam)\n');
-    % [initg1.x_miller, initg1.y_miller, initg1.deg] = gparams_IN();
+    % [initg1.x_miller, initg1.y_miller, initg1.deg] = func_gparamsIN();
     initg1.x_miller = 0;
     initg1.y_miller = 0;
     initg1.deg = 0;
     fprintf('INPUT GRAIN2 ORIENTATION\n');
-    % [initg2.x_miller, initg2.y_miller, initg2.deg] = gparams_IN();
+    % [initg2.x_miller, initg2.y_miller, initg2.deg] = func_gparamsIN();
     initg2.x_miller = 0.5;
     initg2.y_miller = 0.5;
     initg2.deg = 90;

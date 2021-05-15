@@ -1,4 +1,4 @@
-function [v_scale, raw_polar] = rawdata2polarplot(rawdata, v_range)
+function [v_scale, raw_polar] = func_rawdata2polarplot(rawdata, v_range)
 
 v_centre = 1; v_max = 4000;
 image_size = 401;
