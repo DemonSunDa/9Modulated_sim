@@ -39,10 +39,11 @@ clear all;
         % * 0.6 when 7
         sel.n_fringe = [3];
         % * 12 fringes when 11
-        sel.n_step = [5];
+        sel.n_step = [4];
         % * 18 steps when 4
         % * 36 steps when 5
-        sel.noise_level = 8 : 11;
+        % * 90 steps when 6
+        sel.noise_level = 5 : 7;
         % * 0 noise when 1
         % * 0.15 noise when 4
 
