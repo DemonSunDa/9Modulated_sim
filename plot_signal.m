@@ -72,13 +72,13 @@ figure(3182);
 %     ylabel('normalised amplitude');
 % 
 % fmat_range = [0 4000]; % frequency matrix range
-% [f_scale, raw_polar] = rawdata2polarplot(fpspecplot1, fmat_range);
+% [f_scale, raw_polar] = funcrawdata2polarplot(fpspecplot1, fmat_range);
 % figure(3);
 %     imagesc(f_scale, f_scale, raw_polar);
 %     title('(c)');
 %     axis image;
 %     
-% [f_scale, raw_polar] = rawdata2polarplot(fpspecplot2, fmat_range);
+% [f_scale, raw_polar] = funcrawdata2polarplot(fpspecplot2, fmat_range);
 % figure(4);
 %     imagesc(f_scale, f_scale, raw_polar);
 %     title('(d)');
