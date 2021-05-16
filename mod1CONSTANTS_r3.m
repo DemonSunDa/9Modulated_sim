@@ -26,8 +26,8 @@ load('.\mat\0Ni_super_001_to_110_to_111_step_0.05.mat'); % include database
     DB.x_cut = x_cut;
     DB.y_cut = y_cut;
 
-    DB.v_min = min(min(min(min(sv_m)))) * 1e3; % max & min v in database
-    DB.v_max = max(max(max(max(sv_m)))) * 1e3;
+    DB.v_min = min(sv_m(:,:,:,1),[],'all') * 1e3; % max & min v in database
+    DB.v_max = max(sv_m(:,:,:,1),[],'all') * 1e3;
 
     DB.f_centre = (DB.v_max + DB.v_min) / (2 * SC.lambda); % the middle of possible f
     DB.f_diffmax = (DB.v_max - DB.v_min) / SC.lambda; % diference between min and max f
