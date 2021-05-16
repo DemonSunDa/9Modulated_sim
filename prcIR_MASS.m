@@ -39,13 +39,15 @@ clear all;
         % * 0.6 when 7
         sel.n_fringe = [3];
         % * 12 fringes when 11
-        sel.n_step = [4];
+        sel.n_step = [6];
         % * 18 steps when 4
         % * 36 steps when 5
         % * 90 steps when 6
         sel.noise_level = 8 : 11;
         % * 0 noise when 1
-        % * 0.15 noise when 4
+        % * 0.2 noise when 5
+        % * 0.3 noise when 7
+        % * 0.5 noise when 11
 
         % define expecting size of the result
         if sel.g1_prop == 11
