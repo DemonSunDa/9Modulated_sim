@@ -9,8 +9,8 @@
 
 clc;
 clear variables;
-
-load('.\ACVMS\ACV36-38.mat');
+% load('.\ACVMS\storage\ACV46_IR.mat');
+load('.\ACVMS\ACV46_IR.mat');
 
 % init
     % storage
@@ -119,7 +119,7 @@ load('.\ACVMS\ACV36-38.mat');
     fprintf('ARCHIVING\n');
     % str_acv = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', ctr_acv);
     % save(str_acv, 'reval', 'SNR');
-    save('.\ACVMS\ACV36-38_REVAL.mat', 'reval', 'SNR');
+    save('.\ACVMS\ACV46_REVAL.mat', 'reval', 'SNR');
     % clear all;
     fprintf('IR_REVAL DONE\n\n');
 % end output save

@@ -1,13 +1,16 @@
 clc;
 clear variables;
 
-select_acv = '36-38';
-select = 1;
+select_acv = '46';
+select = 3;
 
-str_acv = sprintf('.\\ACVMS\\ACV%s.mat', select_acv);
-str_rvl = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', select_acv);
+str_acv = sprintf('.\\ACVMS\\ACV%s_IR.mat', select_acv);
+str_rvl = sprintf('.\\ACVMS\\ACV%s_REVAL.mat', select_acv);
 load(str_acv);
 load(str_rvl);
+
+% load('.\ACVMS\storage\ACV43_IR.mat');
+% load('.\ACVMS\storage\ACV43_REVAL.mat');
 
 
 plotRE1_st = squeeze(reval(:,1,1,1,1,select));
