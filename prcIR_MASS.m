@@ -22,12 +22,16 @@ clear all;
         vec.n_step = [9, 12, 15, 18, 36, 90, 180];
         vec.noise_level = (0 : 0.05 : 1);
 
-        % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
-        % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
-        % vec.deg = linspace(0, 179, 180) - 0;
+        % single grain mass setup
         vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
         vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
         vec.deg = 0 : 15 : 165;
+
+%         % single grain moderate setup
+%         vec.x = [0,0.2,0.4,0.6,0.8,1];
+%         vec.y = [0,0.2,0.4,0.6,0.8,1];
+%         vec.deg = [0,30,60,90,120,150];
+        
     % end define loop info
     
     mod2preMASSp1
@@ -37,14 +41,14 @@ clear all;
         % * 1 (mono grain) when 11
         % ! IMPORTANT DO NOT MIX ITERATIONS WITH ONE GRAIN TO TWO GRAINS
         % * 0.6 when 7
-        sel.n_fringe = [3];
-        % * 12 fringes when 11
+        sel.n_fringe = [2];
+        % * 12 fringes when 3
         sel.n_step = [7];
         % * 18 steps when 4
         % * 36 steps when 5
         % * 90 steps when 6
         % * 180 steps when 7
-        sel.noise_level = 1 : 4;
+        sel.noise_level = [3];
         % * 0 noise when 1
         % * 0.2 noise when 5
         % * 0.3 noise when 7
