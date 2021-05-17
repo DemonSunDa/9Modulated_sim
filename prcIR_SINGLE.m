@@ -13,7 +13,7 @@ clear all;
     % the inicator is set to 1 which means 1 grain type
 
     mod1CONSTANTS_r3
-    mod2preSINGLE
+    mod2preSINGLE_pseudo
 % end init
 
 
