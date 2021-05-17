@@ -1,10 +1,10 @@
 clc;
 clear variables;
 
-select_acv = 40;
+select_acv = '36-38';
 select = 1;
 
-str_acv = sprintf('.\\ACVMS\\ACV%d_IR.mat', select_acv);
+str_acv = sprintf('.\\ACVMS\\ACV%s.mat', select_acv);
 str_rvl = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', select_acv);
 load(str_acv);
 load(str_rvl);
@@ -42,7 +42,7 @@ figure(408);
     end
 view(-60,10);
     
-str_fig = sprintf('.\\ACVMS\\ACV%d_FIG%d.fig', select_acv, select);
-str_ana = sprintf('.\\ACVMS\\ACV%d_ANA%d.mat', select_acv, select);
+str_fig = sprintf('.\\ACVMS\\ACV%s_FIG%d.fig', select_acv, select);
+str_ana = sprintf('.\\ACVMS\\ACV%s_ANA%d.mat', select_acv, select);
 savefig(str_fig);
 save(str_ana, 'max_R11', 'mean_R11', 'std_R11');
