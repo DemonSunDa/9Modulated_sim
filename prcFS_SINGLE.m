@@ -3,7 +3,7 @@
 
 
 clc;
-clear all;
+% clear all;
 
 
 % init
@@ -14,7 +14,7 @@ clear all;
     % 2 for 2 grain types
 
     mod1CONSTANTS_r3
-    mod2preSINGLE
+    mod2preSINGLE_pseudo
 % end init
 
 
@@ -24,7 +24,7 @@ clear all;
     mod3FSPEC_r4
     mod4et5preFILTER
 
-    fampth = 0;
+    fampth = 0.02;
     done_mod4 = 0;
     while ~done_mod4
         mod4FSMETHOD_t3
@@ -58,6 +58,7 @@ clear all;
     % mod4postFSPEC_t2
     % mod4postFSPEC_t3
     
+    abfil_fpspec_simdata_old = abfil_fpspec_simdata;
     if idc_mix == 2
         abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 2);
         mod5IRMETHODp1et2_t4
@@ -68,6 +69,7 @@ clear all;
     abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 1);
     mod5IRMETHODp1et2_t4
     mod5IRMETHODp3_t1
+    val_corr_g2 = [];
 % end main
 
 
