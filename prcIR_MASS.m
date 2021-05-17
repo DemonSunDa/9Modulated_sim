@@ -41,9 +41,9 @@ clear all;
         % * 1 (mono grain) when 11
         % ! IMPORTANT DO NOT MIX ITERATIONS WITH ONE GRAIN TO TWO GRAINS
         % * 0.6 when 7
-        sel.n_fringe = [2];
+        sel.n_fringe = [1, 2, 4];
         % * 12 fringes when 3
-        sel.n_step = [7];
+        sel.n_step = [5];
         % * 18 steps when 4
         % * 36 steps when 5
         % * 90 steps when 6
