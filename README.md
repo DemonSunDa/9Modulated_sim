@@ -479,7 +479,17 @@ initg2.y_miller = [0];
 initg2.deg = [0];
 ```
 
-ACV49_IR.mat
+---
+
+### ACV46-48
+
+data with new noise generation and snr  
+new gain sets  
+IR at n_step = 180  
+
+---
+
+ACV49.mat
 
 ```matlab
 noise_level = [0.1];
