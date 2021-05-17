@@ -19,8 +19,8 @@ clear all;
     % define loop info
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
-        vec.n_step = [9, 12, 15, 18, 36, 90, 180];
-        vec.noise_level = (0 : 0.05 : 1);
+        vec.n_step = [9, 12, 15, 18, 36, 90, 180]; % 12 and 15 are not in use
+        vec.noise_level = (0 : 0.05 : 5);
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
