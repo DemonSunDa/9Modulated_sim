@@ -9,8 +9,8 @@
 
 clc;
 clear variables;
-
-load('.\ACVMS\ACV34_FS.mat');
+% load('.\ACVMS\storage\ACV46_IR.mat');
+load('.\ACVMS\ACV46_IR.mat');
 
 % init
     % storage
@@ -53,10 +53,15 @@ load('.\ACVMS\ACV34_FS.mat');
                 stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 2), 1];
             plane_res1_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr(ctr_res, 3);
 
-            [evalR11, ~, ~] =...
-                func_getRvalue(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
-            [evalR21, ~, ~] =...
-                func_getRvalue(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
+            evalR11 = func_unsymRvalue(plane_res1(1), plane_res1(2), plane_res1_deg,...
+                plane_sim1(1), plane_sim1(2), plane_sim1_deg);
+            evalR21 = func_unsymRvalue(plane_res1(1), plane_res1(2), plane_res1_deg,...
+                plane_sim2(1), plane_sim2(2), plane_sim2_deg);
+            
+%             [evalR11, ~, ~] =...
+%                 func_getRvalue(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
+%             [evalR21, ~, ~] =...
+%                 func_getRvalue(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
 
             % store
             reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).R11(ctr_res) = evalR11;
@@ -70,11 +75,16 @@ load('.\ACVMS\ACV34_FS.mat');
                 plane_res2 = [stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 1),...
                     stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 2), 1];
                 plane_res2_deg = stArr_simresult(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).val_corr_g2(ctr_res, 3);
-    
-                [evalR12, ~, ~] =...
-                    func_getRvalue(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
-                [evalR22, ~, ~] =...
-                    func_getRvalue(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
+                
+                evalR12 = func_unsymRvalue(plane_res2(1), plane_res2(2), plane_res2_deg,...
+                    plane_sim1(1), plane_sim1(2), plane_sim1_deg);
+                evalR22 = func_unsymRvalue(plane_res2(1), plane_res2(2), plane_res2_deg,...
+                    plane_sim2(1), plane_sim2(2), plane_sim2_deg);
+                
+%                 [evalR12, ~, ~] =...
+%                     func_getRvalue(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
+%                 [evalR22, ~, ~] =...
+%                     func_getRvalue(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
     
                 % store
                 reval(ctr_d2, ctr_d2e, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).R12(ctr_res) = evalR12;
@@ -89,14 +99,27 @@ load('.\ACVMS\ACV34_FS.mat');
     end % d4
     end % d4e
     end % d5
-        
 % end process
+
+
+% SNR
+    SNR.matMean = zeros(sz_simresult(3), sz_simresult(6));
+    SNR.matStd = zeros(sz_simresult(3), sz_simresult(6));
+
+    for ctr_noise = 1 : sz_simresult(6)
+        for ctr_prop = 1 : sz_simresult(3)
+            SNR.matMean(ctr_prop, ctr_noise) = mean(stArr_simresult(4,1,ctr_prop,1,1,ctr_noise).snr_simdata);
+            SNR.matStd(ctr_prop, ctr_noise) = std(stArr_simresult(4,1,ctr_prop,1,1,ctr_noise).snr_simdata);
+        end
+    end
+% end SNR
 
 
 % OUTPUT save
     fprintf('ARCHIVING\n');
-    str_acv = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', ctr_acv);
-    save(str_acv, 'reval');
+    % str_acv = sprintf('.\\ACVMS\\ACV%d_REVAL.mat', ctr_acv);
+    % save(str_acv, 'reval', 'SNR');
+    save('.\ACVMS\ACV46_REVAL.mat', 'reval', 'SNR');
     % clear all;
     fprintf('IR_REVAL DONE\n\n');
 % end output save
