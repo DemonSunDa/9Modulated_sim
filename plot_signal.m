@@ -1,14 +1,15 @@
 % mod1CONSTANTS_r3
 % 
-% mod2preSINGLE
+% mod2preSINGLE_pseudo
 % mod2SIGNAL_r3
 % mod3FSPEC_r4
 % mod4et5preFILTER
-sigplot1 = signal_simdata(:, 1);
-fpspecplot1 = fpspec_simdata;
-snr1 = snr_simdata;
-mean_snr1 = mean(snr1);
-std_snr1 = std(snr1);
+% sigplot1 = signal_simdata(:, 1);
+% fpspecplot1 = fpspec_simdata;
+% snr1 = snr_simdata;
+% mean_snr1 = mean(snr1);
+% std_snr1 = std(snr1);
+fpspecplot1 = abfil_fpspec_simdata_old;
 fpspecplot2 = abfil_fpspec_simdata;
 
 
@@ -64,24 +65,27 @@ fpspecplot2 = abfil_fpspec_simdata;
     
 figure(2);
     subplot(2,1,1);
-    plot(fp_ft, fpspecplot1);
+    plot(IRDB.abfil_ft, fpspecplot1(:,1));
+    title('(a)');
     xlabel('frequency (Hz)');
     ylabel('normalised amplitude');
     
     subplot(2,1,2);
-    plot(IRDB.abfil_ft, fpspecplot2);
+    plot(IRDB.abfil_ft, fpspecplot2(:,1));
     title('(b)');
     xlabel('frequency (Hz)');
     ylabel('normalised amplitude');
     
 figure(45);
-    subplot(1,2,1);
+    subplot(2,1,1);
     imagesc(0:10:170, fp_ft, fpspecplot1);
+    title('(c)');
     xlabel('angle (degree)');
     ylabel('frequency (Hz)');
     
-    subplot(1,2,2);
+    subplot(2,1,2);
     imagesc(0:10:170, IRDB.abfil_ft, fpspecplot2);
+    title('(d)');
     xlabel('angle (degree)');
     ylabel('frequency (Hz)');
 
