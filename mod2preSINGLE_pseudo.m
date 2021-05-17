@@ -22,7 +22,7 @@
     fprintf('Wavelength = %.2f um\n', SC.lambda * 1e6);
     fprintf('Distance from centre of generation patch to detection beam = %.2f um\n', SC.d_gc2d * 1e6);
     
-    vsc.noise_level = 0.2; % input('Noise level (in percentage) = ') / 100;
+    vsc.noise_level = 0; % input('Noise level (in percentage) = ') / 100;
     
     vsc.n_fringe = 12; % input('Fringe number = '); % when 10
     vsc.patch = SC.lambda * vsc.n_fringe; % equal to 200e-6
@@ -43,9 +43,9 @@
     initg1.deg = 0;
     fprintf('INPUT GRAIN2 ORIENTATION\n');
     % [initg2.x_miller, initg2.y_miller, initg2.deg] = func_gparamsIN();
-    initg2.x_miller = 0.5;
-    initg2.y_miller = 0.5;
-    initg2.deg = 90;
+    initg2.x_miller = 1;
+    initg2.y_miller = 1;
+    initg2.deg = 0;
 % end input initial state
 
 

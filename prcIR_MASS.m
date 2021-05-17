@@ -19,8 +19,8 @@ clear all;
     % define loop info
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
-        vec.n_step = [9, 12, 15, 18, 36, 90, 180];
-        vec.noise_level = (0 : 0.05 : 1);
+        vec.n_step = [9, 12, 15, 18, 36, 90, 180]; % 12 and 15 are not in use
+        vec.noise_level = (0 : 0.05 : 5);
 
         % single grain mass setup
         vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
