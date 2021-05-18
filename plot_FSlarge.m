@@ -1,8 +1,8 @@
 clc;
 clear variables;
 
-select_acv = '56';
-select_noise = 2;
+select_acv = '51';
+select_noise = 1;
 select_n_step = 1;
 select_fringe = 1;
 
