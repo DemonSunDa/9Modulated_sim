@@ -22,12 +22,16 @@ clear all;
         vec.n_step = [9, 12, 15, 18, 36, 90, 180]; % 12 and 15 are not in use
         vec.noise_level = (0 : 0.05 : 5);
 
-        % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
-        % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
-        % vec.deg = linspace(0, 179, 180) - 0;
+        % single grain mass setup
         vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
         vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
         vec.deg = 0 : 15 : 165;
+
+%         % single grain moderate setup
+%         vec.x = [0,0.2,0.4,0.6,0.8,1];
+%         vec.y = [0,0.2,0.4,0.6,0.8,1];
+%         vec.deg = [0,30,60,90,120,150];
+        
     % end define loop info
     
     mod2preMASSp1
@@ -37,14 +41,14 @@ clear all;
         % * 1 (mono grain) when 11
         % ! IMPORTANT DO NOT MIX ITERATIONS WITH ONE GRAIN TO TWO GRAINS
         % * 0.6 when 7
-        sel.n_fringe = [3];
-        % * 12 fringes when 11
-        sel.n_step = [1];
+        sel.n_fringe = [1, 2, 4];
+        % * 12 fringes when 3
+        sel.n_step = [5];
         % * 18 steps when 4
         % * 36 steps when 5
         % * 90 steps when 6
         % * 180 steps when 7
-        sel.noise_level = 1 : 5;
+        sel.noise_level = [3];
         % * 0 noise when 1
         % * 0.2 noise when 5
         % * 0.3 noise when 7
@@ -133,9 +137,10 @@ clear all;
     fprintf('ARCHIVING\n');
     load('.\ACVMS\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACVMS\\ACV%d_IR.mat', ctr_acv);
-    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
+    str_acv = sprintf('.\\ACVMS\\ACV%d.mat', ctr_acv);
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
+    ctr_acv = num2str(ctr_acv);
+    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
     % clear all;
     fprintf('IR_SIM DONE\n\n');
 % end output save
