@@ -20,17 +20,22 @@ clear all;
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
         vec.n_step = [9, 12, 15, 18, 36, 90, 180]; % 12 and 15 are not in use
-        vec.noise_level = (0 : 0.05 : 5);
+        vec.noise_level = (0 : 0.05 : 0.5);
 
-        % single grain mass setup
-        vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-        vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-        vec.deg = 0 : 15 : 165;
+%         % single grain mass setup
+%         vec.x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+%         vec.y = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+%         vec.deg = 0 : 15 : 165;
 
-%         % single grain moderate setup
-%         vec.x = [0,0.2,0.4,0.6,0.8,1];
-%         vec.y = [0,0.2,0.4,0.6,0.8,1];
-%         vec.deg = [0,30,60,90,120,150];
+        % single grain moderate setup
+        vec.x = [0,0.2,0.4,0.6,0.8,1];
+        vec.y = [0,0.2,0.4,0.6,0.8,1];
+        vec.deg = [0,30,60,90,120,150];
+
+%           % single grain small setup
+%           vec.x = [0, 0.25, 0.5, 0.75 ,1];
+%           vec.y = [0, 0.25, 0.5, 0.75 ,1];
+%           vec.deg = [randi([0, 59], 1, 1), randi([60, 119], 1, 1), randi([120, 179], 1, 1)];
         
     % end define loop info
     
@@ -41,14 +46,14 @@ clear all;
         % * 1 (mono grain) when 11
         % ! IMPORTANT DO NOT MIX ITERATIONS WITH ONE GRAIN TO TWO GRAINS
         % * 0.6 when 7
-        sel.n_fringe = [1, 2, 4];
+        sel.n_fringe = [1, 2, 3, 4];
         % * 12 fringes when 3
-        sel.n_step = [5];
+        sel.n_step = [1, 4, 5, 6, 7];
         % * 18 steps when 4
         % * 36 steps when 5
         % * 90 steps when 6
         % * 180 steps when 7
-        sel.noise_level = [3];
+        sel.noise_level = 1 : 11;
         % * 0 noise when 1
         % * 0.2 noise when 5
         % * 0.3 noise when 7

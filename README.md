@@ -503,3 +503,18 @@ initg2.x_miller = [0];
 initg2.y_miller = [0];
 initg2.deg = [0];
 ```
+
+ACV50.mat
+
+```matlab
+noise_level = [0, 0.1];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [1];
+initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.deg = [randi([0, 59], 1, 1), randi([60, 119], 1, 1), randi([120, 179], 1, 1)];
+initg2.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.deg = [randi([0, 59], 1, 1), randi([60, 119], 1, 1), randi([120, 179], 1, 1)];
+```
