@@ -3,7 +3,7 @@
 
 
 clc;
-% clear all;
+clear all;
 
 
 % init
@@ -14,7 +14,7 @@ clc;
     % 2 for 2 grain types
 
     mod1CONSTANTS_r3
-    mod2preSINGLE_pseudo
+    mod2preSINGLE
 % end init
 
 
@@ -24,7 +24,7 @@ clc;
     mod3FSPEC_r4
     mod4et5preFILTER
 
-    fampth = 0.02;
+    fampth = 0;
     done_mod4 = 0;
     while ~done_mod4
         mod4FSMETHOD_t3

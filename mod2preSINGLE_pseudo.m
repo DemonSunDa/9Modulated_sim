@@ -22,12 +22,12 @@
     fprintf('Wavelength = %.2f um\n', SC.lambda * 1e6);
     fprintf('Distance from centre of generation patch to detection beam = %.2f um\n', SC.d_gc2d * 1e6);
     
-    vsc.noise_level = 0.1; % input('Noise level (in percentage) = ') / 100;
+    vsc.noise_level = 0.10; % input('Noise level (in percentage) = ') / 100;
     
     vsc.n_fringe = 12; % input('Fringe number = '); % when 10
     vsc.patch = SC.lambda * vsc.n_fringe; % equal to 200e-6
     
-    vsc.n_step = 18; % input('Number of rotation steps = ');
+    vsc.n_step = 36; % input('Number of rotation steps = ');
     vsc.deg_step = 180 / vsc.n_step;
     
     initg1.prop = input('Grain 1 proportion (in percentage) = ') / 100;
