@@ -27,15 +27,15 @@ clear all;
     mod2preMASSp1
     
     % system config selection
-        sel.g1_prop = [7];
+        sel.g1_prop = 6 : 10;
         % * 1 (mono grain) when 11
         % * 0.6 when 7
-        sel.n_fringe = [3];
+        sel.n_fringe = 1 : 4;
         % * 12 fringes when 11
-        sel.n_step = [5];
+        sel.n_step = [1, 4, 5, 6, 7];
         % * 18 steps when 4
         % * 36 steps when 5
-        sel.noise_level = [1, 7];
+        sel.noise_level = [6, 7, 8, 9, 10, 11]; % [1, 16, 21]
         % * 0 noise when 1
         
         % define expecting size of the result    

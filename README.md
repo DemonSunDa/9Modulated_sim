@@ -555,8 +555,26 @@ initg2.deg = [randi([0, 59], 1, 1), randi([60, 119], 1, 1), randi([120, 179], 1,
 ACV52.mat
 
 ```matlab
-
+noise_level = [0 : 0.05, 0.5];
+n_fringe = [4, 8, 12, 16];
+n_step = [9, 18, 36, 90, 180];
+g1_prop = [1];
+initg1.x_miller = [0, 0.2, 0.4, 0.6, 0.8, 1];
+initg1.y_miller = [0, 0.2, 0.4, 0.6, 0.8, 1];
+initg1.deg = [0, 30, 60, 90, 120, 150];
+initg2.x_miller = [0, 0.2, 0.4, 0.6, 0.8, 1];
+initg2.y_miller = [0, 0.2, 0.4, 0.6, 0.8, 1];
+initg2.deg = [0, 30, 60, 90, 120, 150];
 ```
+
+---
+
+### ACV52
+
+mass loops for all variables  
+for result part of IR in thesis  
+
+---
 
 ACV53.mat
 
@@ -628,3 +646,33 @@ for ACV55_FS, mod4postFSPEC_t2
 for ACV54_FS, mod4postFSPEC_t3  
 
 ---
+
+ACV57.mat
+
+```matlab
+noise_level = [0.05, 0.06, 0.07, 0.08, 0.09, 0.1];
+n_fringe = [4, 8, 12, 16];
+n_step = [9, 18, 36, 90, 180];
+g1_prop = [0.5, 0.6, 0.7, 0.8, 0.9];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
+
+ACV58.mat
+
+```matlab
+noise_level = [0, 0.15, 0.2];
+n_fringe = [4, 8, 12, 16];
+n_step = [9, 18, 36, 90, 180];
+g1_prop = [0.5, 0.6, 0.7, 0.8, 0.9];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
