@@ -540,16 +540,82 @@ IR at n_step = 9
 ACV51.mat
 
 ```matlab
-noise_level = [0, 0.1];
-n_fringe = [12];
-n_step = [36];
-g1_prop = [0.1, 0.3, 0.5];
-initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
-initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
-initg1.deg = [randi(), randi(), randi()];
-initg2.x_miller = [0, 0.25, 0.5, 0.75, 1];
-initg2.y_miller = [0, 0.25, 0.5, 0.75, 1];
-initg2.deg = [randi(), randi(), randi()];
+
 ```
 
 ACV52.mat
+
+```matlab
+
+```
+
+ACV53.mat
+
+```matlab
+noise_level = [0, 0.6];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
+
+ACV54.mat
+
+```matlab
+noise_level = [0, 0.6];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
+
+ACV55.mat
+
+```matlab
+noise_level = [0, 0.6];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
+
+ACV56.mat
+
+```matlab
+noise_level = [0, 0.6];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [0.6];
+initg1.x_miller = [0, 0.5, 1];
+initg1.y_miller = [0, 0.5, 1];
+initg1.deg = [randi([0, 179], 1, 1)];
+initg2.x_miller = [0, 0.5, 1];
+initg2.y_miller = [0, 0.5, 1];
+initg2.deg = [randi([0, 179], 1, 1)];
+```
+
+---
+
+### ACV54-56
+
+are testing new thresholding methods with FSMETHOD  
+for ACV56_FS, mod4postFSPEC_t1
+for ACV55_FS, mod4postFSPEC_t2  
+for ACV54_FS, mod4postFSPEC_t3  
+
+---
