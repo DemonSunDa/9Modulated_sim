@@ -19,22 +19,23 @@ clear all;
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 1];
-        vec.y = [0, 1];
-        vec.deg = [0];
+        vec.x = [0, 0.5, 1];
+        vec.y = [0, 0.5, 1];
+        vec.deg = [randi([0, 179], 1, 1)];
     % end define loop info
     
     mod2preMASSp1
     
     % system config selection
-        sel.g1_prop = [6];
+        sel.g1_prop = [7];
         % * 1 (mono grain) when 11
         % * 0.6 when 7
         sel.n_fringe = [3];
         % * 12 fringes when 11
         sel.n_step = [5];
         % * 18 steps when 4
-        sel.noise_level = [6];
+        % * 36 steps when 5
+        sel.noise_level = [1, 7];
         % * 0 noise when 1
         
         % define expecting size of the result    
@@ -125,9 +126,9 @@ clear all;
             end
         end
         
-        % mod4postFSPEC_t1
+        mod4postFSPEC_t1
         % mod4postFSPEC_t2
-        mod4postFSPEC_t3
+        % mod4postFSPEC_t3
 
         if idc_mix == 2
             abfil_fpspec_simdata = abfil_fpspec_regen(:, :, 2);
