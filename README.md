@@ -295,7 +295,7 @@ initg2.deg = [0];
 ### ACV36-38
 
 data with new noise generation and snr  
-new gain sets  
+new grain sets  
 IR at n_step = 36  
 
 ---
@@ -350,7 +350,7 @@ initg2.deg = [0];
 ### ACV39-41
 
 data with new noise generation and snr  
-new gain sets  
+new grain sets  
 IR at n_step = 18  
 
 ---
@@ -429,7 +429,7 @@ initg2.deg = [0];
 ### ACV43-45
 
 data with new noise generation and snr  
-new gain sets  
+new grain sets  
 IR at n_step = 90  
 
 ---
@@ -484,7 +484,7 @@ initg2.deg = [0];
 ### ACV46-48
 
 data with new noise generation and snr  
-new gain sets  
+new grain sets  
 IR at n_step = 180  
 
 ---
@@ -503,3 +503,53 @@ initg2.x_miller = [0];
 initg2.y_miller = [0];
 initg2.deg = [0];
 ```
+
+---
+
+### ACV49
+
+evaluating fringe number  
+
+---
+
+ACV50.mat
+
+```matlab
+noise_level = [0.1];
+n_fringe = [12];
+n_step = [9];
+g1_prop = [1];
+initg1.x_miller = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+initg1.y_miller = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+initg1.deg = [0 : 15 : 165];
+initg2.x_miller = [0];
+initg2.y_miller = [0];
+initg2.deg = [0];
+```
+
+---
+
+### ACV50
+
+data with new noise generation and snr  
+new grain sets  
+IR at n_step = 9  
+
+---
+
+ACV51.mat
+
+```matlab
+noise_level = [0, 0.1];
+n_fringe = [12];
+n_step = [36];
+g1_prop = [0.1, 0.3, 0.5];
+initg1.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg1.deg = [randi(), randi(), randi()];
+initg2.x_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.y_miller = [0, 0.25, 0.5, 0.75, 1];
+initg2.deg = [randi(), randi(), randi()];
+```
+
+ACV52.mat
