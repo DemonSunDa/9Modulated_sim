@@ -1,10 +1,10 @@
 clc;
 clear variables;
 
-select_acv = '49';
+select_acv = '53';
 select_noise = 1;
 select_n_step = 1;
-select_fringe = 2;
+select_fringe = 1;
 
 str_acv = sprintf('.\\ACVMS\\ACV%s.mat', select_acv);
 str_rvl = sprintf('.\\ACVMS\\ACV%s_REVAL.mat', select_acv);
