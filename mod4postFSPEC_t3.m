@@ -25,19 +25,23 @@
 % regen
     [arrg1_max_famp, arrg1_max_ind] = max(peak.famp);
     for ctr_recol = 1 : vsc.n_step
-        abfil_fpspec_regen(peak.idx(arrg1_max_ind(ctr_recol), ctr_recol), ctr_recol, 1) = arrg1_max_famp(ctr_recol);
+        if peak.idx(arrg1_max_ind(ctr_recol), ctr_recol) ~= 0
+            abfil_fpspec_regen(peak.idx(arrg1_max_ind(ctr_recol), ctr_recol), ctr_recol, 1) = arrg1_max_famp(ctr_recol);
+        end
     end
     if idc_mix == 2
         arrg2_max_famp = zeros(1, vsc.n_step);
         arrg2_max_ind = zeros(1, vsc.n_step);
         for ctr_remax = 1 : vsc.n_step
-            [arrg2_max_famp(ctr_remax), arrg2_max_ind(ctr_remax)] = max(abs(peak.freq(1 : peak.ctr(ctr_remax), ctr_remax) - peak.freq(arrg1_max_ind(ctr_remax), ctr_remax)));
-            if arrg2_max_ind(ctr_remax) ~= arrg2_max_ind(ctr_remax)
-                abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_remax), ctr_remax), ctr_remax, 2)...
-                    = arrg2_max_famp(ctr_remax);
-            else
-                abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_remax), ctr_remax), ctr_remax, 2)...
-                    = fampth;
+            if peak.idx(arrg1_max_ind(ctr_remax), ctr_remax) ~= 0
+                [arrg2_max_famp(ctr_remax), arrg2_max_ind(ctr_remax)] = max(abs(peak.freq(1 : peak.ctr(ctr_remax), ctr_remax) - peak.freq(arrg1_max_ind(ctr_remax), ctr_remax)));
+                if arrg2_max_ind(ctr_remax) ~= arrg2_max_ind(ctr_remax)
+                    abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_remax), ctr_remax), ctr_remax, 2)...
+                        = arrg2_max_famp(ctr_remax);
+                else
+                    abfil_fpspec_regen(peak.idx(arrg2_max_ind(ctr_remax), ctr_remax), ctr_remax, 2)...
+                        = fampth;
+                end
             end
         end
     end
