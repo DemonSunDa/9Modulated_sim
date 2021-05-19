@@ -11,7 +11,7 @@ clc;
 clear variables;
 % load('.\ACVMS\storage\ACV46_IR.mat');
 
-ctr_acv = '1';
+ctr_acv = '3';
 str_acv = sprintf('.\\ACVMS\\ACV%s.mat', ctr_acv);
 load(str_acv);
 

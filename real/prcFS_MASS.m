@@ -33,7 +33,7 @@ clear all;
         sel.n_fringe = 2;
         % * 12 fringes when 11
         sel.n_step = 2;
-        sel.noise_level = [9, 10, 11];
+        sel.noise_level = [1, 11];
         % * 0 noise when 1
         
         % define expecting size of the result    
@@ -92,6 +92,7 @@ clear all;
             ctr_d2e, sz_simresult(2), ctr_d2, sz_simresult(1));
         mod2SIGNAL_r3
         mod3FSPEC_r4
+        mod3postSIM
         mod4et5preFILTER
 
         fampth = 0;
