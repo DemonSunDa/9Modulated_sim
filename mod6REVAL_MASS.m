@@ -11,7 +11,7 @@ clc;
 clear variables;
 % load('.\ACVMS\storage\ACV46_IR.mat');
 
-ctr_acv = '51';
+ctr_acv = '52';
 str_acv = sprintf('.\\ACVMS\\ACV%s.mat', ctr_acv);
 load(str_acv);
 
@@ -28,6 +28,8 @@ load(str_acv);
             'R22', [],...
             'corr2', [],...
             'idc_mix', 0);
+        SNR.matMean = zeros(sz_simresult(3), sz_simresult(4), sz_simresult(5), sz_simresult(6));
+        SNR.matStd = zeros(sz_simresult(3), sz_simresult(4), sz_simresult(5), sz_simresult(6));
 % end init
 
 
@@ -98,24 +100,20 @@ load(str_acv);
         end
     end % d2
     end % d2e
+    SNRcat= [];
+    for ctr_g2 = 1 : sz_simresult(2)
+        for ctr_g1 = 1 : sz_simresult(1)
+            SNRcat =cat(2, SNRcat,...
+                stArr_simresult(ctr_g1, ctr_g2, ctr_d3, ctr_d4, ctr_d4e, ctr_d5).snr_simdata);
+        end
+    end
+    SNR.matMean(ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = mean(SNRcat);
+    SNR.matStd(ctr_d3, ctr_d4, ctr_d4e, ctr_d5) = std(SNRcat);
     end % d3
     end % d4
     end % d4e
     end % d5
 % end process
-
-
-% SNR
-    SNR.matMean = zeros(sz_simresult(3), sz_simresult(6));
-    SNR.matStd = zeros(sz_simresult(3), sz_simresult(6));
-
-    for ctr_noise = 1 : sz_simresult(6)
-        for ctr_prop = 1 : sz_simresult(3)
-            SNR.matMean(ctr_prop, ctr_noise) = mean(stArr_simresult(4,1,ctr_prop,1,1,ctr_noise).snr_simdata);
-            SNR.matStd(ctr_prop, ctr_noise) = std(stArr_simresult(4,1,ctr_prop,1,1,ctr_noise).snr_simdata);
-        end
-    end
-% end SNR
 
 
 % OUTPUT save
