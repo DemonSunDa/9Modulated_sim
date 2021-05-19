@@ -19,15 +19,15 @@ clear all;
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0,1];
-        vec.y = [0,1];
+        vec.x = [0,0.5,1];
+        vec.y = [0,0.5,1];
         vec.deg = [randi([0, 179], 1, 1)];
     % end define loop info
     
     mod2preMASSp1
     
     % system config selection
-        sel.g1_prop = 11;
+        sel.g1_prop = 6 : 10;
         % * 1 (mono grain) when 11
         % * 0.6 when 7
         sel.n_fringe = 2;

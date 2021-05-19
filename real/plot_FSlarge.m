@@ -1,7 +1,7 @@
 clc;
 clear variables;
 
-select_acv = '54';
+select_acv = '3';
 select_noise = 2;
 select_n_step = 1;
 select_fringe = 1;
@@ -80,7 +80,7 @@ std_R2 = std(temp_num);
 figure(420);
     subplot(2,1,1);
     im1 = imagesc(plotRE_R1);
-    title('(e)');
+    title('(a)');
     xlabel('Grain 1');
     ylabel('Grain 2');
     axis image;
@@ -88,7 +88,7 @@ figure(420);
     subplot(2,1,2);
     im2 = imagesc(plotRE_R2);
     set(im2, 'alphadata', ~isnan(plotRE_R2)); % set NaN to white
-    title('(f)');
+    title('(b)');
     xlabel('Grain 1');
     ylabel('Grain 2');
     axis image;
