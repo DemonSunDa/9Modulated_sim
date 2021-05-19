@@ -18,7 +18,7 @@
 
 % init
     % fft params
-        L_ft = 2e3 / 4.88; % frequency sample length
+        L_ft = 2e3 / 5; % frequency sample length
         fp_ft = Fs * (0 : (L_ft / 2)) / L_ft; % sample frequency domain with padding
         f_res = Fs / L_sig;
         fp_res = Fs / L_ft;
