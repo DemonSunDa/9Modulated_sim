@@ -1,10 +1,11 @@
 clc;
 clear variables;
 
-select_acv = '51';
-select_noise = 1;
+select_acv = '54';
+select_noise = 2;
 select_n_step = 1;
 select_fringe = 1;
+select_prop = 1;
 
 str_acv = sprintf('.\\ACVMS\\ACV%s.mat', select_acv);
 str_rvl = sprintf('.\\ACVMS\\ACV%s_REVAL.mat', select_acv);
@@ -15,7 +16,7 @@ load(str_rvl);
 % load('.\ACVMS\storage\ACV43_REVAL.mat');
 
 
-plotRE_st = squeeze(reval(:,:,1,select_fringe,select_n_step,select_noise));
+plotRE_st = squeeze(reval(:,:,select_prop,select_fringe,select_n_step,select_noise));
 
 sz_g1 = sz_simresult(1);
 sz_g2 = sz_simresult(1);
@@ -76,20 +77,23 @@ mean_R2 = mean(temp_num);
 std_R2 = std(temp_num);
 
 
-% figure(408);
-%     s = slice(vec.x, vec.y, vec.deg, plotRE1_R11, [], [], vec.deg);
-%     title('(b)');
-%     xlabel('Miller x');
-%     ylabel('Miller y');
-%     zlabel('angle');
-%     for ctr_s = 1 :sz_deg
-%         % s(ctr_s).FaceColor = 'none';
-%         s(ctr_s).EdgeColor = 'none';
-%         s(ctr_s).FaceAlpha = 0.75;
-%     end
-% view(-60,10);
+figure(420);
+    subplot(2,1,1);
+    im1 = imagesc(plotRE_R1);
+    title('(e)');
+    xlabel('Grain 1');
+    ylabel('Grain 2');
+    axis image;
     
-% str_fig = sprintf('.\\ACVMS\\ACV%s_FIG%d_%d_%d.fig', select_acv, select_noise, select_n_step, select_fringe);
-% str_ana = sprintf('.\\ACVMS\\ACV%s_ANA%d_%d_%d.mat', select_acv, select_noise, select_n_step, select_fringe);
-% savefig(str_fig);
-% save(str_ana, 'max_R11', 'mean_R11', 'std_R11');
+    subplot(2,1,2);
+    im2 = imagesc(plotRE_R2);
+    set(im2, 'alphadata', ~isnan(plotRE_R2)); % set NaN to white
+    title('(f)');
+    xlabel('Grain 1');
+    ylabel('Grain 2');
+    axis image;
+    
+str_fig = sprintf('.\\ACVMS\\ACV%s_FIG%d_%d_%d_%d.fig', select_acv, select_noise, select_n_step, select_fringe, select_prop);
+str_ana = sprintf('.\\ACVMS\\ACV%s_ANA%d_%d_%d_%d.mat', select_acv, select_noise, select_n_step, select_fringe, select_prop);
+savefig(str_fig);
+save(str_ana, 'max_R1', 'mean_R1', 'std_R1', 'max_R2', 'mean_R2', 'std_R2');
