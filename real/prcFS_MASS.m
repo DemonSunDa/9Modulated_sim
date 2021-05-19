@@ -13,29 +13,27 @@ clear all;
     % define loop info
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
-        vec.n_step = [9, 12, 15, 18, 36, 90, 180];
+        vec.n_step = [9, 18, 36, 90, 180];
         vec.noise_level = (0 : 0.01 : 0.5);
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
-        vec.x = [0, 0.5, 1];
-        vec.y = [0, 0.5, 1];
+        vec.x = [0,1];
+        vec.y = [0,1];
         vec.deg = [randi([0, 179], 1, 1)];
     % end define loop info
     
     mod2preMASSp1
     
     % system config selection
-        sel.g1_prop = 6 : 10;
+        sel.g1_prop = 11;
         % * 1 (mono grain) when 11
         % * 0.6 when 7
-        sel.n_fringe = 1 : 4;
+        sel.n_fringe = 2;
         % * 12 fringes when 11
-        sel.n_step = [1, 4, 5, 6, 7];
-        % * 18 steps when 4
-        % * 36 steps when 5
-        sel.noise_level = [6, 7, 8, 9, 10, 11]; % [1, 16, 21]
+        sel.n_step = 2;
+        sel.noise_level = [9, 10, 11];
         % * 0 noise when 1
         
         % define expecting size of the result    
