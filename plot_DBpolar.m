@@ -18,11 +18,12 @@ load('.\mat\1CONSTANTS.mat');
 % figure(324)
 %     polarplot(arr_plot4, ':');
 
+mkdir .\DBfig
 for ctr_x = 1 : 2 : 21
     for ctr_y = 1 : 2 : 21
         arr_plot = [squeeze(DB.sv_m(ctr_x,ctr_y,:,1)); squeeze(DB.sv_m(ctr_x,ctr_y,:,1))];
         pp = polarplot(arr_plot);
-        pp.LineWidth = 5;
+        pp.LineWidth = 10;
         axis([0, 360, 0, 4]);
         str_OUT = sprintf('.\\DBfig\\DB%d_%d.png', ctr_x, ctr_y);
         saveas(gcf, str_OUT);
