@@ -35,7 +35,7 @@ clear all;
         sel.n_step = [1, 4, 5, 6, 7];
         % * 18 steps when 4
         % * 36 steps when 5
-        sel.noise_level = [6, 7, 8, 9, 10, 11]; % [1, 16, 21]
+        sel.noise_level = [11]; % [1, 16, 21] [6, 7, 8, 9, 10, 11]
         % * 0 noise when 1
         
         % define expecting size of the result    
