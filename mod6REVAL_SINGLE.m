@@ -1,5 +1,5 @@
 % MODULUS 6REVAL_SINGLE
-%   using function get_R_value to evaluate the difference between
+%   using function func_getRvalue to evaluate the difference between
 %   simulation input and result
 % DEPENDENCY
 %   ACVSG
@@ -30,7 +30,7 @@ load('.\ACVSG\ACV19_IR.mat');
     % plane_b = [1, 1, 1];
     % plane_a_deg = 0;
     % plane_b_deg = 90;
-    % [R, phi, tau] = get_R_value(plane_a, plane_b, plane_a_deg, plane_b_deg);
+    % [R, phi, tau] = func_getRvalue(plane_a, plane_b, plane_a_deg, plane_b_deg);
     
     % two conditions:
     % without FSMETHOD =>> 1 ir result
@@ -47,9 +47,9 @@ load('.\ACVSG\ACV19_IR.mat');
         plane_res1_deg = val_corr(ctr_res, 3);
 
         [evalR11, ~, ~] =...
-            get_R_value(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
+            func_getRvalue(plane_res1, plane_sim1, plane_res1_deg, plane_sim1_deg);
         [evalR21, ~, ~] =...
-            get_R_value(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
+            func_getRvalue(plane_res1, plane_sim2, plane_res1_deg, plane_sim2_deg);
 
         % store
         reval.R11(ctr_res) = evalR11;
@@ -63,9 +63,9 @@ load('.\ACVSG\ACV19_IR.mat');
             plane_res2_deg = val_corr_g2(ctr_res, 3);
 
             [evalR12, ~, ~] =...
-                get_R_value(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
+                func_getRvalue(plane_res2, plane_sim1, plane_res2_deg, plane_sim1_deg);
             [evalR22, ~, ~] =...
-                get_R_value(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
+                func_getRvalue(plane_res2, plane_sim2, plane_res2_deg, plane_sim2_deg);
 
             % store
             reval.R12(ctr_res) = evalR12;

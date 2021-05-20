@@ -14,27 +14,28 @@ clear all;
         vec.g1_prop = (0 : 0.1 : 1);
         vec.n_fringe = [4, 8, 12, 16];
         vec.n_step = [9, 12, 15, 18, 36, 90, 180];
-        vec.noise_level = (0 : 0.05 : 1);
+        vec.noise_level = (0 : 0.01 : 0.5);
 
         % vec.x = linspace(DB.x_cut(1) , DB.x_cut(size(DB.x_cut, 2)), 2) + 0; % for vec size 21, 11, 6, 3 etc
         % vec.y = linspace(DB.y_cut(1) , DB.y_cut(size(DB.y_cut, 2)), 2) + 0;
         % vec.deg = linspace(0, 179, 180) - 0;
         vec.x = [0, 0.5, 1];
         vec.y = [0, 0.5, 1];
-        vec.deg = [0];
+        vec.deg = [randi([0, 179], 1, 1)];
     % end define loop info
     
     mod2preMASSp1
     
     % system config selection
-        sel.g1_prop = [7];
+        sel.g1_prop = 6 : 10;
         % * 1 (mono grain) when 11
         % * 0.6 when 7
-        sel.n_fringe = [3];
+        sel.n_fringe = 1 : 4;
         % * 12 fringes when 11
-        sel.n_step = [4];
+        sel.n_step = [1, 4, 5, 6, 7];
         % * 18 steps when 4
-        sel.noise_level = [1, 3, 5];
+        % * 36 steps when 5
+        sel.noise_level = [11]; % [1, 16, 21] [6, 7, 8, 9, 10, 11]
         % * 0 noise when 1
         
         % define expecting size of the result    
@@ -168,9 +169,10 @@ clear all;
     fprintf('ARCHIVING\n');
     load('.\ACVMS\acvmgr.mat');
     ctr_acv = ctr_acv + 1;
-    str_acv = sprintf('.\\ACVMS\\ACV%d_FS.mat', ctr_acv);
-    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
+    str_acv = sprintf('.\\ACVMS\\ACV%d.mat', ctr_acv);
     save('.\ACVMS\acvmgr.mat', 'ctr_acv');
+    ctr_acv = num2str(ctr_acv);
+    save(str_acv, 'SC', 'stArr_simresult', 'ctr_acv', 'vec', 'sel', 'sz_simresult');
     % clear all;
     fprintf('FS_SIM DONE\n\n');
 % end output save
