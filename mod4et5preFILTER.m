@@ -1,19 +1,3 @@
-% MODULUS 4et5preFILTER
-%   abrupt filter for frequency spectrum
-% DEPENDENCY
-%   
-% FILE OUTPUT
-%   
-
-
-
-% abrupt filter
-    fth.offset_max = 0.3e3; % threshold offset for max v
-    fth.offset_min = 0.3e3; % threshold offset for min v
-    fth.calmax = (DB.v_max + fth.offset_max) / SC.lambda; % find the maximum possible f plus th
-    fth.calmin = (DB.v_min - fth.offset_min) / SC.lambda; % find the minimum possible f minus th
-    [fth.valmax_ln, fth.valmax_col, fth.valmax] = find(abs(fp_ft - fth.calmax) < (fp_res / 2));
-    [fth.valmin_ln, fth.valmin_col, fth.valmin] = find(abs(fp_ft - fth.calmin) < (fp_res / 2));
-    IRDB.abfil_ft = fp_ft(fth.valmin_col : fth.valmax_col);
-    abfil_fpspec_simdata = fpspec_simdata(fth.valmin_col : fth.valmax_col, :);
-% end abrupt filter
+version https://git-lfs.github.com/spec/v1
+oid sha256:d22159605a0187db4a630135f7472fa2b226254a2cb9aee22dd2c5bf77898b54
+size 779

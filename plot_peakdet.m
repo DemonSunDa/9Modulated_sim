@@ -1,8 +1,3 @@
-figure(414);
-subplot(2,1,2);
-plot(IRDB.abfil_ft, abfil_fpspec_simdata(:, 1),...
-    '-x','MarkerIndices' , peak.idx(1: peak.ctr(1), 1),...
-    'MarkerSize', 15, 'MarkerEdgeColor', 'red');
-    title('(b)');
-    xlabel('Frequency');
-    ylabel('Amplitude');
+version https://git-lfs.github.com/spec/v1
+oid sha256:8f3f88c9747ecc569d76c08c66843eaa2d0262e5b85843721105329fe0311540
+size 255

@@ -1,14 +1,3 @@
-clc;
-clear variables;
-load('sig_noise.mat');
-
-
-snr_real = zeros(1, 101);
-
-
-for ctr = 1 : 101
-    snr_real(ctr) = snr(w_signal(ctr,:)-w_noise, w_noise);
-end
-
-mean_snr_real = mean(snr_real);
-std_snr_real = std(snr_real);
+version https://git-lfs.github.com/spec/v1
+oid sha256:286059fbe223a3934b486f9bed1fe1b704ce2ca914557e8c7eb3e6346cc7e169
+size 218
